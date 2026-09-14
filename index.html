@@ -360,6 +360,46 @@ h1{
   pointer-events:none!important
 }
 
+
+/* contact */
+.contact-intro{
+  margin:0 0 18px;
+  color:#68727d;
+  font-size:14px;
+  line-height:1.6
+}
+.contact-grid{display:grid;gap:14px}
+.contact-field{display:grid;gap:6px}
+.contact-label{font-size:12px;font-weight:850;color:#505a55}
+.contact-input,.contact-textarea{
+  width:100%;
+  border:1px solid #d8dde4;
+  border-radius:14px;
+  padding:12px 14px;
+  background:#fff;
+  color:var(--ink);
+  font:inherit;
+  outline:none
+}
+.contact-input:focus,.contact-textarea:focus{
+  border-color:rgba(113,105,238,.75);
+  box-shadow:0 0 0 4px rgba(81,74,226,.07)
+}
+.contact-textarea{min-height:150px;resize:vertical;line-height:1.5}
+.contact-actions{display:flex;justify-content:flex-end;margin-top:14px}
+.contact-actions .submit{min-width:150px}
+.contact-status{
+  display:none;
+  margin-top:14px;
+  border-radius:14px;
+  padding:12px 14px;
+  font-size:13px;
+  line-height:1.5
+}
+.contact-status.success{display:block;background:var(--mint-soft);border:1px solid #c8eddf;color:#2f6a56}
+.contact-status.error{display:block;background:var(--danger-soft);border:1px solid #f0caca;color:#863333}
+#contact-turnstile-container{min-height:1px}
+
 /* modals */
 .modal-backdrop{
   position:fixed;
@@ -559,6 +599,8 @@ h1{
       <span>·</span>
       <a href="#" data-modal="privacy" data-i18n="privacyShort">Confidențialitate</a>
       <span>·</span>
+      <a href="#" data-modal="contact" data-i18n="contactShort">Contact</a>
+      <span>·</span>
       <a href="#" data-modal="it4y" data-i18n="it4yShort">IT4Y & Founding Member</a>
     </div>
   </section>
@@ -608,6 +650,7 @@ h1{
       <h3>Scop</h3><p>Administrarea preînregistrării, notificarea lansării, activarea ulterioară a contului și rezervarea beneficiilor aferente programului.</p>
       <h3>Anti-abuz și Cloudflare Turnstile</h3><p>Folosim Cloudflare Turnstile pentru protejarea formularului împotriva boților și automatizărilor abuzive. Cloudflare poate prelucra semnale tehnice strict necesare verificării de securitate. Am configurat Turnstile fără pre-clearance. IP-ul nu este stocat în tabela principală de preînregistrări.</p>
       <h3>Marketing</h3><p>Preînregistrarea nu reprezintă consimțământ pentru newsletter ori marketing general. O asemenea opțiune, dacă va fi introdusă, va fi separată.</p>
+      <h3>Mesaje trimise prin formularul de contact</h3><p>Dacă folosești formularul de contact, prelucrăm adresa de e-mail, subiectul, mesajul, limba și data/ora transmiterii, precum și numele dacă alegi să îl completezi. Datele sunt folosite pentru primirea, gestionarea și soluționarea solicitării. Mesajele sunt stocate în infrastructura Supabase; IP-ul brut nu este stocat în tabela de mesaje. Formularul folosește Cloudflare Turnstile și rate limiting pentru prevenirea abuzului.</p>
       <h3>Drepturi</h3><p>Poți solicita retragerea din program, accesul, rectificarea sau ștergerea datelor, sub rezerva obligațiilor legale aplicabile.</p>
       <div class="warning"><strong>De completat înainte de publicarea formularului:</strong> operatorul/controlorul, adresa de contact pentru protecția datelor și perioada exactă de retenție.</div>
     </div>
@@ -616,6 +659,7 @@ h1{
       <h3>Purpose</h3><p>Pre-registration administration, launch notification, later account activation and reservation of applicable benefits.</p>
       <h3>Anti-abuse and Cloudflare Turnstile</h3><p>We use Cloudflare Turnstile to protect the form against bots and abusive automation. Cloudflare may process technical signals strictly necessary for the security check. Turnstile is configured without pre-clearance. The IP address is not stored in the main pre-registration table.</p>
       <h3>Marketing</h3><p>Pre-registration is not consent for general newsletters or marketing. Any such option will be separate.</p>
+      <h3>Messages sent through the contact form</h3><p>If you use the contact form, we process your email address, subject, message, language and submission date/time, plus your name if you choose to provide it. The data is used to receive, manage and answer your request. Messages are stored in the Supabase infrastructure; the raw IP address is not stored in the messages table. The form uses Cloudflare Turnstile and rate limiting to prevent abuse.</p>
       <h3>Your rights</h3><p>You may ask to withdraw from the program or request access, rectification or deletion, subject to applicable legal obligations.</p>
       <div class="warning"><strong>Complete before public collection:</strong> controller/operator identity, privacy contact and exact retention period.</div>
     </div>
@@ -640,8 +684,62 @@ h1{
   </div>
 </div>
 
+
+<div id="contactModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="modal-head">
+      <strong id="contactModalTitle" data-i18n="contactTitle">Contact IsThere4You</strong>
+      <button class="close" type="button" aria-label="Închide">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="contact-intro" data-i18n="contactIntro">Trimite-ne un mesaj. Adresa de e-mail a operatorului nu este publicată pe site; răspunsul va fi trimis la adresa indicată de tine.</p>
+
+      <div class="contact-grid" id="contactFormArea">
+        <label class="contact-field">
+          <span class="contact-label" data-i18n="contactNameLabel">Nume (opțional)</span>
+          <input id="contactName" class="contact-input" type="text" maxlength="120" autocomplete="name" data-i18n-placeholder="contactNamePlaceholder" placeholder="numele tău">
+        </label>
+
+        <label class="contact-field">
+          <span class="contact-label" data-i18n="contactEmailLabel">E-mail</span>
+          <input id="contactEmail" class="contact-input" type="email" maxlength="254" autocomplete="email" data-i18n-placeholder="contactEmailPlaceholder" placeholder="adresa ta de e-mail">
+        </label>
+
+        <label class="contact-field">
+          <span class="contact-label" data-i18n="contactSubjectLabel">Subiect</span>
+          <input id="contactSubject" class="contact-input" type="text" maxlength="200" data-i18n-placeholder="contactSubjectPlaceholder" placeholder="despre ce vrei să ne scrii">
+        </label>
+
+        <label class="contact-field">
+          <span class="contact-label" data-i18n="contactMessageLabel">Mesaj</span>
+          <textarea id="contactMessage" class="contact-textarea" maxlength="5000" data-i18n-placeholder="contactMessagePlaceholder" placeholder="scrie mesajul aici"></textarea>
+        </label>
+
+        <div class="honeypot" aria-hidden="true">
+          <label>Website <input id="contactWebsite" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <label class="check">
+          <input id="contactPrivacyAcknowledged" type="checkbox">
+          <span><span data-i18n="contactPrivacyPrefix">Confirm că am luat la cunoștință informațiile privind prelucrarea datelor din</span> <a href="#" data-modal="privacy" data-i18n="privacyShort">Confidențialitate</a>.</span>
+        </label>
+
+        <div class="turnstile-wrap" aria-live="polite">
+          <div id="contact-turnstile-container"></div>
+        </div>
+      </div>
+
+      <div class="contact-actions">
+        <button id="contactSend" class="submit" type="button" data-i18n="contactSend">Trimite mesajul</button>
+      </div>
+      <div id="contactStatus" class="contact-status" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 const ENDPOINT = 'https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/prelaunch-signup';
+const CONTACT_ENDPOINT = 'https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/contact-message';
 const TURNSTILE_SITE_KEY = "0x4AAAAAAEz4QjiQUN5P0KVn";
 const MIN_HUMAN_TIME_MS = 2200;
 
@@ -649,6 +747,10 @@ let turnstileWidgetId = null;
 let turnstileToken = "";
 let pendingSubmission = null;
 let originalButtonText = "";
+let contactTurnstileWidgetId = null;
+let contactTurnstileToken = "";
+let contactPendingSubmission = null;
+let contactOriginalButtonText = "";
 const pageLoadedAt = Date.now();
 
 const copy = {
@@ -661,8 +763,11 @@ const copy = {
     termsPrefix:"Am citit și accept",termsLink:"Termenii pentru preînregistrare v1.0",
     privacyPrefix:"Confirm că am luat la cunoștință",privacyLink:"Nota de informare privind datele de pre-lansare v1.0",
     noMarketing:"Înscrierea nu te abonează automat la marketing. Orice newsletter sau comunicare promoțională va avea o opțiune separată.",
-    termsShort:"Termeni preînregistrare",privacyShort:"Confidențialitate",it4yShort:"IT4Y & Founding Member",
+    termsShort:"Termeni preînregistrare",privacyShort:"Confidențialitate",contactShort:"Contact",it4yShort:"IT4Y & Founding Member",
     termsTitle:"Termeni pentru preînregistrarea IsThere4You — v1.0",privacyTitle:"Notă de informare pre-lansare — v1.0",it4yTitle:"IT4Y & Founding Member",
+    contactTitle:"Contact IsThere4You",contactIntro:"Trimite-ne un mesaj. Adresa de e-mail a operatorului nu este publicată pe site; răspunsul va fi trimis la adresa indicată de tine.",
+    contactNameLabel:"Nume (opțional)",contactNamePlaceholder:"numele tău",contactEmailLabel:"E-mail",contactEmailPlaceholder:"adresa ta de e-mail",contactSubjectLabel:"Subiect",contactSubjectPlaceholder:"despre ce vrei să ne scrii",contactMessageLabel:"Mesaj",contactMessagePlaceholder:"scrie mesajul aici",contactPrivacyPrefix:"Confirm că am luat la cunoștință informațiile privind prelucrarea datelor din",contactSend:"Trimite mesajul",
+    contactInvalid:"Completează o adresă de e-mail validă, un subiect de cel puțin 2 caractere și un mesaj de cel puțin 5 caractere.",contactPrivacyRequired:"Confirmă că ai luat la cunoștință informațiile privind prelucrarea datelor.",contactSending:"Se trimite…",contactSuccess:"Mesajul a fost primit și salvat. Îți vom răspunde la adresa de e-mail indicată.",contactError:"Mesajul nu a putut fi trimis. Încearcă din nou peste câteva momente.",contactRateLimited:"Ai trimis prea multe solicitări într-un interval scurt. Încearcă din nou mai târziu.",
     invalid:"Introdu o adresă de e-mail validă.",checks:"Bifează cele trei confirmări necesare pentru preînregistrare.",
     sending:"Se înregistrează…",successTitle:"Adresa este pe lista de pre-lansare.",
     success:"Dacă adresa era deja înscrisă, nu am creat o înregistrare duplicată. Îți vom scrie când IsThere4You se deschide.",
@@ -680,8 +785,11 @@ const copy = {
     termsPrefix:"I have read and accept",termsLink:"Pre-registration Terms v1.0",
     privacyPrefix:"I acknowledge",privacyLink:"Pre-launch Privacy Notice v1.0",
     noMarketing:"Pre-registration does not automatically subscribe you to marketing. Any newsletter or promotional communications will use a separate choice.",
-    termsShort:"Pre-registration Terms",privacyShort:"Privacy",it4yShort:"IT4Y & Founding Member",
+    termsShort:"Pre-registration Terms",privacyShort:"Privacy",contactShort:"Contact",it4yShort:"IT4Y & Founding Member",
     termsTitle:"IsThere4You Pre-registration Terms — v1.0",privacyTitle:"Pre-launch Privacy Notice — v1.0",it4yTitle:"IT4Y & Founding Member",
+    contactTitle:"Contact IsThere4You",contactIntro:"Send us a message. The operator's email address is not published on the website; any reply will be sent to the address you provide.",
+    contactNameLabel:"Name (optional)",contactNamePlaceholder:"your name",contactEmailLabel:"Email",contactEmailPlaceholder:"your email address",contactSubjectLabel:"Subject",contactSubjectPlaceholder:"what would you like to write about",contactMessageLabel:"Message",contactMessagePlaceholder:"write your message here",contactPrivacyPrefix:"I acknowledge the information about data processing in",contactSend:"Send message",
+    contactInvalid:"Enter a valid email address, a subject of at least 2 characters and a message of at least 5 characters.",contactPrivacyRequired:"Please acknowledge the information about data processing.",contactSending:"Sending…",contactSuccess:"Your message has been received and saved. We will reply to the email address you provided.",contactError:"Your message could not be sent. Please try again in a few moments.",contactRateLimited:"Too many requests were sent in a short period. Please try again later.",
     invalid:"Enter a valid email address.",checks:"Please tick all three confirmations required for pre-registration.",
     sending:"Registering…",successTitle:"This email is on the pre-launch list.",
     success:"If it was already registered, no duplicate entry was created. We'll write when IsThere4You opens.",
@@ -739,7 +847,9 @@ document.querySelectorAll("[data-modal]").forEach(a=>a.addEventListener("click",
   e.preventDefault();
   const id=a.dataset.modal+"Modal";
   const modal=document.getElementById(id);
+  if(!modal) return;
   modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+  if(id==="contactModal") setTimeout(initContactTurnstile,0);
 }));
 document.querySelectorAll(".close").forEach(b=>b.addEventListener("click",()=>{
   const modal=b.closest(".modal-backdrop"); modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
@@ -839,6 +949,109 @@ async function submitRegistration(payload){
   }
 }
 
+
+function showContactStatus(type,key){
+  const el=document.getElementById("contactStatus");
+  if(!el) return;
+  el.className="contact-status "+type;
+  el.textContent=t(key);
+}
+
+function clearContactStatus(){
+  const el=document.getElementById("contactStatus");
+  if(!el) return;
+  el.className="contact-status";
+  el.textContent="";
+}
+
+function restoreContactButton(){
+  const btn=document.getElementById("contactSend");
+  if(!btn) return;
+  btn.disabled=false;
+  btn.textContent=contactOriginalButtonText || t("contactSend");
+}
+
+function resetContactTurnstile(){
+  contactTurnstileToken="";
+  if(window.turnstile && contactTurnstileWidgetId!==null){
+    try{ window.turnstile.reset(contactTurnstileWidgetId); }catch(_){}
+  }
+}
+
+function initContactTurnstile(){
+  if(!window.turnstile || contactTurnstileWidgetId!==null) return;
+  const container=document.getElementById("contact-turnstile-container");
+  if(!container) return;
+
+  contactTurnstileWidgetId=window.turnstile.render("#contact-turnstile-container",{
+    sitekey:TURNSTILE_SITE_KEY,
+    theme:"light",
+    appearance:"interaction-only",
+    execution:"execute",
+    action:"contact_message",
+
+    callback:(token)=>{
+      contactTurnstileToken=token;
+      if(contactPendingSubmission){
+        const payload=contactPendingSubmission;
+        contactPendingSubmission=null;
+        submitContactMessage(payload);
+      }
+    },
+
+    "expired-callback":()=>{ contactTurnstileToken=""; },
+
+    "error-callback":()=>{
+      contactTurnstileToken="";
+      contactPendingSubmission=null;
+      restoreContactButton();
+      showContactStatus("error","verificationError");
+      return true;
+    }
+  });
+}
+
+async function submitContactMessage(payload){
+  try{
+    const res=await fetch(CONTACT_ENDPOINT,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({...payload,turnstileToken:contactTurnstileToken})
+    });
+
+    const data=await res.json().catch(()=>({}));
+
+    if(res.ok && data.ok){
+      showContactStatus("success","contactSuccess");
+      document.getElementById("contactSubject").value="";
+      document.getElementById("contactMessage").value="";
+      document.getElementById("contactWebsite").value="";
+      document.getElementById("contactPrivacyAcknowledged").checked=false;
+      resetContactTurnstile();
+      return;
+    }
+
+    resetContactTurnstile();
+    if(data.error==="rate_limited"){
+      showContactStatus("error","contactRateLimited");
+    }else if(
+      data.error==="turnstile_failed" ||
+      data.error==="turnstile_required" ||
+      data.error==="verification_unavailable"
+    ){
+      showContactStatus("error","verificationError");
+    }else{
+      showContactStatus("error","contactError");
+    }
+  }catch(err){
+    console.error(err);
+    resetContactTurnstile();
+    showContactStatus("error","contactError");
+  }finally{
+    restoreContactButton();
+  }
+}
+
 window.addEventListener("load",()=>{
   if(window.turnstile){
     initTurnstile();
@@ -914,6 +1127,64 @@ document.getElementById("signup").addEventListener("click", async()=>{
     showMessage("error","errorTitle","verificationError");
   }
 });
+
+document.getElementById("contactSend").addEventListener("click",()=>{
+  clearContactStatus();
+
+  const name=document.getElementById("contactName").value.trim();
+  const email=document.getElementById("contactEmail").value.trim();
+  const subject=document.getElementById("contactSubject").value.trim();
+  const message=document.getElementById("contactMessage").value.trim();
+  const privacyAcknowledged=document.getElementById("contactPrivacyAcknowledged").checked;
+  const website=document.getElementById("contactWebsite").value;
+  const btn=document.getElementById("contactSend");
+
+  if(name.length>120 || !validEmail(email) || subject.length<2 || subject.length>200 || message.length<5 || message.length>5000){
+    showContactStatus("error","contactInvalid");
+    return;
+  }
+
+  if(!privacyAcknowledged){
+    showContactStatus("error","contactPrivacyRequired");
+    return;
+  }
+
+  contactOriginalButtonText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent=t("verification");
+
+  const payload={
+    name,
+    email,
+    subject,
+    message,
+    language:lang,
+    privacyAcknowledged,
+    website
+  };
+
+  if(!window.turnstile || contactTurnstileWidgetId===null){
+    restoreContactButton();
+    showContactStatus("error","verificationError");
+    return;
+  }
+
+  if(contactTurnstileToken){
+    submitContactMessage(payload);
+    return;
+  }
+
+  contactPendingSubmission=payload;
+  try{
+    window.turnstile.execute(contactTurnstileWidgetId);
+  }catch(err){
+    console.error(err);
+    contactPendingSubmission=null;
+    restoreContactButton();
+    showContactStatus("error","verificationError");
+  }
+});
+
 applyLang("ro");
 </script>
 </body>
