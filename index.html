@@ -3,29 +3,913 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IsThere4You — Site în construcție</title>
+<meta name="robots" content="index,follow">
+<title>IsThere4You — Pre-lansare</title>
+<meta name="description" content="IsThere4You — pre-lansare. Înscrie-te pentru a fi anunțat la deschidere.">
 <style>
-:root{--ink:#171a18;--muted:#737b88;--border:#e1e5ea;--mint:#16ad79;--mint-soft:#e6f8f1;--indigo:#4b49db;--indigo-soft:#eef0ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;color:var(--ink);background:radial-gradient(circle at 7% 8%,rgba(75,73,219,.13),transparent 29%),radial-gradient(circle at 93% 92%,rgba(22,173,121,.14),transparent 28%),#f8f9fc}.wrap{width:min(560px,calc(100% - 28px));text-align:center;position:relative}.lang-switch{display:flex;justify-content:flex-end;margin-bottom:10px}.lang-box{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.9)}.lang-btn{border:0;background:transparent;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:850;color:var(--muted);cursor:pointer}.lang-btn.active{background:var(--indigo);color:#fff}.card{background:rgba(255,255,255,.94);border:1px solid var(--border);border-radius:30px;padding:48px 44px 42px;box-shadow:0 24px 65px rgba(56,61,75,.10)}.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--mint-soft);color:#07855c;font-size:14px;font-weight:850}.dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}.brand{margin:28px 0 12px;font-size:44px;line-height:1;font-weight:950;letter-spacing:-.055em}.brand .four{color:var(--indigo)}h1{font-size:24px;letter-spacing:-.025em;margin:18px 0 10px}.lead{font-size:17px;line-height:1.65;color:var(--muted);margin:0 auto;max-width:420px}.progress-label{margin-top:26px;display:flex;justify-content:space-between;color:#747d89;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.progress{height:8px;border-radius:999px;background:#ececf7;overflow:hidden;margin-top:8px}.progress>span{display:block;width:72%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--indigo),var(--mint))}.note{margin:24px 0 0;color:#7d8490;font-size:14px}.footer{margin-top:22px;color:#959ca7;font-size:13px}@media(max-width:560px){.card{padding:36px 22px 32px}.brand{font-size:38px}}
+:root{
+  --ink:#171a18;
+  --muted:#707887;
+  --border:rgba(218,224,232,.88);
+  --mint:#18b181;
+  --mint-soft:rgba(229,249,241,.86);
+  --indigo:#514ae2;
+  --indigo-2:#695fff;
+  --indigo-soft:rgba(238,240,255,.86);
+  --gold:#99701d;
+  --gold-soft:rgba(255,248,231,.86);
+  --danger:#a53636;
+  --danger-soft:#fff0f0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+*{box-sizing:border-box}
+html{background:#f7f8fc}
+body{
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 8% 6%, rgba(90,86,235,.18), transparent 29%),
+    radial-gradient(circle at 91% 91%, rgba(26,191,137,.16), transparent 28%),
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.92), transparent 37%),
+    linear-gradient(180deg,#f8f9fd 0%,#f7faf9 100%);
+  overflow-x:hidden;
+}
+body:before,
+body:after{
+  content:"";
+  position:fixed;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.22;
+  pointer-events:none;
+  z-index:0;
+}
+body:before{
+  left:-120px;
+  top:120px;
+  background:rgba(91,83,235,.58);
+}
+body:after{
+  right:-100px;
+  bottom:40px;
+  background:rgba(24,177,129,.52);
+}
+button,input{font:inherit}
+.wrap{
+  width:min(670px,calc(100% - 28px));
+  text-align:center;
+  padding:28px 0;
+  position:relative;
+  z-index:1
+}
+.lang-switch{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:12px
+}
+.lang-box{
+  display:inline-flex;
+  gap:3px;
+  padding:4px;
+  border:1px solid rgba(214,220,228,.9);
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  box-shadow:0 8px 28px rgba(63,70,86,.08), inset 0 1px 0 rgba(255,255,255,.8);
+  backdrop-filter:blur(12px)
+}
+.lang-btn{
+  border:0;
+  background:transparent;
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:12px;
+  font-weight:900;
+  color:#737b86;
+  cursor:pointer;
+  transition:.2s ease
+}
+.lang-btn:hover{color:var(--indigo)}
+.lang-btn.active{
+  background:linear-gradient(135deg,var(--indigo),var(--indigo-2));
+  color:#fff;
+  box-shadow:0 5px 16px rgba(81,74,226,.28)
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(220,225,233,.95);
+  border-radius:34px;
+  padding:52px 46px 42px;
+  box-shadow:
+    0 28px 80px rgba(56,61,75,.11),
+    0 1px 0 rgba(255,255,255,.96) inset;
+  backdrop-filter:blur(18px)
+}
+.card:before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  left:50%;
+  top:72px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle, rgba(81,74,226,.14) 0%, rgba(81,74,226,.06) 35%, transparent 70%);
+  filter:blur(4px);
+  pointer-events:none
+}
+.card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.44);
+  pointer-events:none
+}
+.badge{
+  position:relative;
+  z-index:1;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 15px;
+  border-radius:999px;
+  background:linear-gradient(180deg,rgba(235,252,246,.96),rgba(225,248,239,.90));
+  color:#07855c;
+  font-size:13px;
+  font-weight:900;
+  border:1px solid rgba(202,239,225,.9);
+  box-shadow:
+    0 0 0 5px rgba(24,177,129,.035),
+    0 8px 24px rgba(24,177,129,.08)
+}
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--mint);
+  box-shadow:0 0 14px rgba(24,177,129,.55)
+}
+.brand{
+  position:relative;
+  z-index:1;
+  margin:32px 0 12px;
+  font-size:clamp(46px,8vw,58px);
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.065em;
+  color:#171a18;
+  text-shadow:0 1px 0 rgba(255,255,255,.95)
+}
+.brand .four{
+  color:var(--indigo);
+  position:relative;
+  text-shadow:
+    0 0 10px rgba(81,74,226,.18),
+    0 0 22px rgba(81,74,226,.12)
+}
+.brand .four:after{
+  content:"";
+  position:absolute;
+  width:42px;
+  height:42px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:rgba(81,74,226,.14);
+  filter:blur(17px);
+  z-index:-1
+}
+h1{
+  position:relative;
+  z-index:1;
+  font-size:31px;
+  letter-spacing:-.04em;
+  margin:18px 0 10px
+}
+.lead{
+  position:relative;
+  z-index:1;
+  font-size:17px;
+  line-height:1.72;
+  color:var(--muted);
+  margin:0 auto;
+  max-width:485px
+}
+.founding{
+  position:relative;
+  z-index:1;
+  margin:31px auto 20px;
+  padding:15px 17px;
+  border:1px solid rgba(238,214,157,.92);
+  border-radius:18px;
+  background:
+    linear-gradient(180deg,rgba(255,251,240,.95),rgba(255,246,224,.88));
+  color:#80601d;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 10px 26px rgba(183,137,39,.07)
+}
+.founding a,.legal-links a{
+  color:var(--indigo);
+  text-decoration:underline;
+  text-underline-offset:3px;
+  cursor:pointer
+}
+.form{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  margin-top:20px
+}
+.input{
+  min-height:54px;
+  border:1px solid rgba(209,216,225,.94);
+  border-radius:16px;
+  padding:0 16px;
+  background:rgba(255,255,255,.92);
+  outline:none;
+  color:var(--ink);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.96);
+  transition:.2s ease
+}
+.input:focus{
+  border-color:rgba(113,105,238,.75);
+  box-shadow:
+    0 0 0 4px rgba(81,74,226,.07),
+    0 8px 25px rgba(81,74,226,.06)
+}
+.submit{
+  min-height:54px;
+  border:0;
+  border-radius:16px;
+  padding:0 21px;
+  background:linear-gradient(135deg,var(--indigo),var(--indigo-2));
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(81,74,226,.22);
+  transition:.2s ease
+}
+.submit:hover{transform:translateY(-1px);box-shadow:0 13px 28px rgba(81,74,226,.26)}
+.submit:disabled{opacity:.62;cursor:wait;transform:none}
+.checks{
+  position:relative;
+  z-index:1;
+  display:grid;
+  gap:12px;
+  margin-top:19px
+}
+.check{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  text-align:left;
+  color:#68727d;
+  font-size:12px;
+  line-height:1.5
+}
+.check input{margin-top:2px;accent-color:var(--indigo)}
+.check a{color:var(--indigo);font-weight:800}
+
+.turnstile-wrap{
+  position:relative;
+  z-index:1;
+  min-height:1px;
+  display:flex;
+  justify-content:center;
+  margin-top:12px;
+}
+#turnstile-container{
+  min-height:1px;
+}
+.privacy-note{
+  position:relative;
+  z-index:1;
+  margin-top:14px;
+  color:#8d949e;
+  font-size:11px;
+  line-height:1.55;
+  text-align:left
+}
+.message{
+  position:relative;
+  z-index:1;
+  display:none;
+  margin-top:18px;
+  border-radius:18px;
+  padding:16px 17px;
+  text-align:left;
+  font-size:13px;
+  line-height:1.55
+}
+.message.success{
+  display:block;
+  background:
+    linear-gradient(180deg,rgba(232,250,243,.94),rgba(225,247,238,.88));
+  border:1px solid rgba(192,232,217,.94);
+  color:#2f6a56;
+  box-shadow:0 11px 26px rgba(24,177,129,.07)
+}
+.message.error{
+  display:block;
+  background:var(--danger-soft);
+  border:1px solid #f0caca;
+  color:#863333
+}
+.message strong{display:block;margin-bottom:4px}
+.legal-links{
+  position:relative;
+  z-index:1;
+  margin-top:24px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  color:#7c858f;
+  font-size:12px
+}
+.footer{
+  margin-top:22px;
+  color:#959ca6;
+  font-size:12px
+}
+.honeypot{
+  position:absolute!important;
+  left:-10000px!important;
+  top:auto!important;
+  width:1px!important;
+  height:1px!important;
+  overflow:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important
+}
+
+/* modals */
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(18,23,21,.50);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:50;
+  backdrop-filter:blur(6px)
+}
+.modal-backdrop.open{display:flex}
+.modal{
+  width:min(760px,100%);
+  max-height:86vh;
+  overflow:auto;
+  background:rgba(255,255,255,.98);
+  border-radius:26px;
+  border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.22);
+  text-align:left
+}
+.modal-head{
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:19px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  z-index:2
+}
+.modal-head strong{font-size:18px}
+.close{
+  border:1px solid var(--border);
+  background:#fff;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  cursor:pointer
+}
+.modal-body{
+  padding:22px;
+  color:#505a55;
+  font-size:14px;
+  line-height:1.65
+}
+.modal-body h3{color:var(--ink);font-size:16px;margin:22px 0 7px}
+.modal-body p{margin:7px 0 12px}
+.modal-body ul{padding-left:20px}
+.notice{
+  padding:12px 14px;
+  border-radius:12px;
+  background:var(--indigo-soft);
+  color:#4c4f78;
+  margin:12px 0
+}
+.warning{
+  padding:12px 14px;
+  border-radius:12px;
+  background:var(--gold-soft);
+  color:#71591f;
+  margin:12px 0
+}
+
+@media(max-width:620px){
+  .wrap{width:min(100% - 20px,670px);padding:18px 0}
+  .card{padding:38px 22px 32px;border-radius:28px}
+  .brand{font-size:43px}
+  .form{grid-template-columns:1fr}
+  .submit{width:100%}
+}
+
+.success-email{
+  margin-top:10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(190,226,213,.95);
+  color:#3f6658;
+  font-size:12px;
+  font-weight:850
+}
+.success-email .checkmark{
+  width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--mint);color:#fff;
+  font-size:12px;font-weight:900
+}
+.founding-success{
+  display:none;
+  position:relative;
+  z-index:1;
+  margin:14px auto 0;
+  padding:16px 18px;
+  border-radius:18px;
+  border:1px solid rgba(217,196,144,.9);
+  background:linear-gradient(180deg,rgba(255,251,239,.96),rgba(255,246,224,.9));
+  box-shadow:0 10px 28px rgba(167,125,34,.07);
+  color:#76591c;
+  text-align:center
+}
+.founding-success.show{display:block}
+.founding-success .title{
+  font-weight:950;
+  font-size:15px;
+  margin-bottom:4px
+}
+.founding-success .sub{
+  font-size:12px;
+  line-height:1.45;
+  color:#7c6a3f
+}
+.founding-success a{
+  color:var(--indigo);
+  font-weight:850;
+  text-decoration:underline;
+  text-underline-offset:3px
+}
+
 </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
 </head>
 <body>
 <main class="wrap">
-  <div class="lang-switch"><div class="lang-box" aria-label="Language selector"><button class="lang-btn active" data-lang="ro">RO</button><button class="lang-btn" data-lang="en">EN</button></div></div>
+  <div class="lang-switch">
+    <div class="lang-box" aria-label="Language selector">
+      <button class="lang-btn active" type="button" data-lang="ro">RO</button>
+      <button class="lang-btn" type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+
   <section class="card">
-    <div class="badge"><span class="dot"></span> <span data-i18n="badge">Se pregătește ceva nou</span></div>
+    <div class="badge"><span class="dot"></span><span data-i18n="badge">Pre-lansare</span></div>
     <div class="brand">IsThere<span class="four">4</span>You</div>
-    <h1 data-i18n="title">În curând.</h1>
-    <p class="lead"><span data-i18n="lead">Lucrăm la ceva ce vrem să păstrăm surpriză pentru moment.</span></p>
-    <div class="progress-label"><span data-i18n="progress">Pregătiri în desfășurare</span><span data-i18n="working">În lucru</span></div>
-    <div class="progress"><span></span></div>
-    <p class="note" data-i18n="note">Revino în curând.</p>
+    <h1 data-i18n="title">Fii printre primii.</h1>
+    <p class="lead" data-i18n="lead">Înscrie-te înainte de lansare. Te anunțăm când deschidem și îți rezervăm beneficiile de membru fondator.</p>
+
+    <div class="founding">
+      ✦ <span data-i18n="founding">Founding Member 2026 · recompensă IT4Y rezervată</span>
+      · <a href="#" data-modal="it4y" data-i18n="whatIt4y">Ce sunt IT4Y?</a>
+    </div>
+
+    <div id="signupArea">
+      <div class="form">
+        <input id="email" class="input" type="email" autocomplete="email" maxlength="254" data-i18n-placeholder="placeholder" placeholder="adresa ta de e-mail">
+        <button id="signup" class="submit" type="button" data-i18n="button">Înscrie-mă</button>
+      </div>
+
+      <div class="honeypot" aria-hidden="true">
+        <label>Website <input id="website" type="text" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="checks">
+        <label class="check">
+          <input id="launchConsent" type="checkbox">
+          <span data-i18n="launchConsent">Solicit preînregistrarea și sunt de acord să primesc notificarea privind lansarea IsThere4You și informațiile necesare activării contului de pre-lansare.</span>
+        </label>
+
+        <label class="check">
+          <input id="termsAccepted" type="checkbox">
+          <span><span data-i18n="termsPrefix">Am citit și accept</span> <a href="#" data-modal="terms" data-i18n="termsLink">Termenii pentru preînregistrare v1.0</a>.</span>
+        </label>
+
+        <label class="check">
+          <input id="privacyAcknowledged" type="checkbox">
+          <span><span data-i18n="privacyPrefix">Confirm că am luat la cunoștință</span> <a href="#" data-modal="privacy" data-i18n="privacyLink">Nota de informare privind datele de pre-lansare v1.0</a>.</span>
+        </label>
+      </div>
+
+      <div class="turnstile-wrap" aria-live="polite">
+        <div id="turnstile-container"></div>
+      </div>
+
+      <div class="privacy-note" data-i18n="noMarketing">Înscrierea nu te abonează automat la marketing. Orice newsletter sau comunicare promoțională va avea o opțiune separată.</div>
+    </div>
+
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+
+    <div id="foundingSuccess" class="founding-success">
+      <div class="title" data-i18n="foundingSuccessTitle">Founding Member 2026</div>
+      <div class="sub">
+        <span data-i18n="foundingSuccessText">Statutul tău de pre-lansare este rezervat conform termenilor.</span>
+        · <a href="#" data-modal="it4y" data-i18n="whatIt4y">Ce sunt IT4Y?</a>
+      </div>
+    </div>
+
+    <div class="legal-links">
+      <a href="#" data-modal="terms" data-i18n="termsShort">Termeni preînregistrare</a>
+      <span>·</span>
+      <a href="#" data-modal="privacy" data-i18n="privacyShort">Confidențialitate</a>
+      <span>·</span>
+      <a href="#" data-modal="it4y" data-i18n="it4yShort">IT4Y & Founding Member</a>
+    </div>
   </section>
+
   <div class="footer">© 2026 IsThere4You</div>
 </main>
+
+<div id="termsModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head"><strong data-i18n="termsTitle">Termeni pentru preînregistrarea IsThere4You — v1.0</strong><button class="close" type="button">×</button></div>
+    <div class="modal-body" data-legal-ro>
+      <p>Prin înscrierea în programul de pre-lansare IsThere4You, utilizatorul solicită înregistrarea adresei sale de e-mail pentru a fi informat cu privire la lansarea platformei și pentru rezervarea beneficiilor aferente programului de pre-lansare.</p>
+      <h3>1. Preînregistrarea</h3>
+      <p>Preînregistrarea nu reprezintă crearea unui cont activ și nu conferă acces imediat la serviciile platformei. IsThere4You se află în dezvoltare și nu garantează o anumită dată de lansare.</p>
+      <h3>2. Founding Member 2026</h3>
+      <p>„Founding Member 2026” este exclusiv un statut simbolic și promoțional al comunității, destinat anumitor utilizatori eligibili înscriși în perioada de pre-lansare.</p>
+      <p>Acest statut nu conferă calitatea de fondator, cofondator, asociat, acționar, investitor, creditor, partener, reprezentant ori mandatar al operatorului și nu conferă drepturi asupra proiectului, codului, domeniului, mărcii, veniturilor, profiturilor ori activelor IsThere4You.</p>
+      <p>Statutul nu conferă drepturi de vot, administrare, control, dividende, distribuiri de active sau alte drepturi patrimoniale. Este personal și netransmisibil.</p>
+      <h3>3. IT4Y Points</h3>
+      <p>IT4Y Points sunt unități digitale interne de recompensă ale ecosistemului IsThere4You. În funcție de funcționalitățile disponibile, ele vor putea fi utilizate pentru anumite funcții sau beneficii Premium, alte avantaje interne și, dacă această funcție va fi activată, pentru recompensarea voluntară a altor utilizatori ca formă de mulțumire.</p>
+      <p>IT4Y Points nu reprezintă bani, monedă electronică, criptomonedă, instrument financiar, depozit, titlu de valoare ori creanță împotriva operatorului. Nu pot fi retrase în numerar și nu există nicio promisiune privind aprecierea ori convertibilitatea lor.</p>
+      <h3>4. Recompensa de pre-lansare</h3>
+      <p>Preînregistrarea poate conferi eligibilitatea pentru o recompensă IT4Y rezervată. „Reserved” nu înseamnă că punctele au fost deja emise sau că pot fi utilizate imediat. Acordarea efectivă poate fi condiționată de crearea și verificarea contului și de regulile programului aplicabile la momentul activării.</p>
+      <h3>5. Înscrieri neeligibile</h3>
+      <p>Înscrierile multiple, automate, fictive, frauduloase ori efectuate pentru manipularea mecanismului de recompense pot fi eliminate. O singură persoană nu dobândește beneficii multiple prin folosirea mai multor adrese.</p>
+      <h3>6. Modificarea programului</h3>
+      <p>IsThere4You poate modifica pentru viitor mecanismul pre-lansării ori programul IT4Y din motive tehnice, operaționale sau legale. Modificările semnificative care afectează beneficiile deja rezervate vor fi comunicate atunci când natura lor impune acest lucru.</p>
+      <div class="warning"><strong>De completat înainte de publicarea formularului:</strong> identitatea juridică a operatorului și datele oficiale de contact.</div>
+    </div>
+    <div class="modal-body" data-legal-en style="display:none">
+      <p>By joining the IsThere4You pre-launch program, the user asks us to register their email address for launch notification and reservation of applicable pre-launch benefits.</p>
+      <h3>1. Pre-registration</h3><p>Pre-registration does not create an active account or immediate access to the platform. IsThere4You is under development and no specific launch date is guaranteed.</p>
+      <h3>2. Founding Member 2026</h3><p>“Founding Member 2026” is solely a symbolic and promotional community status. It does not make the user a founder, co-founder, shareholder, investor, creditor, partner, representative or agent of the operator and grants no ownership, voting, management, profit, dividend or asset rights.</p>
+      <h3>3. IT4Y Points</h3><p>IT4Y Points are internal digital reward units. Depending on available features, they may be used for certain Premium functions or internal benefits and, if enabled, as a voluntary way to thank other users.</p><p>IT4Y Points are not money, electronic money, cryptocurrency, a financial instrument, deposit, security or claim against the operator. They cannot be cashed out and carry no promise of appreciation or convertibility.</p>
+      <h3>4. Pre-launch reward</h3><p>Pre-registration may reserve eligibility for an IT4Y reward. “Reserved” does not mean that points have already been issued or can be used immediately. Actual granting may require account creation/verification and compliance with the program rules applicable at activation.</p>
+      <h3>5. Ineligible registrations</h3><p>Multiple, automated, fictitious or fraudulent registrations may be removed.</p>
+      <div class="warning"><strong>Complete before public collection:</strong> the operator’s legal identity and official contact details.</div>
+    </div>
+  </div>
+</div>
+
+<div id="privacyModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head"><strong data-i18n="privacyTitle">Notă de informare pre-lansare — v1.0</strong><button class="close" type="button">×</button></div>
+    <div class="modal-body" data-legal-ro>
+      <p>Pentru preînregistrare colectăm numai datele necesare administrării programului: adresa de e-mail, limba, data/ora înscrierii, versiunile documentelor acceptate și starea eligibilității/recompensei.</p>
+      <h3>Scop</h3><p>Administrarea preînregistrării, notificarea lansării, activarea ulterioară a contului și rezervarea beneficiilor aferente programului.</p>
+      <h3>Anti-abuz și Cloudflare Turnstile</h3><p>Folosim Cloudflare Turnstile pentru protejarea formularului împotriva boților și automatizărilor abuzive. Cloudflare poate prelucra semnale tehnice strict necesare verificării de securitate. Am configurat Turnstile fără pre-clearance. IP-ul nu este stocat în tabela principală de preînregistrări.</p>
+      <h3>Marketing</h3><p>Preînregistrarea nu reprezintă consimțământ pentru newsletter ori marketing general. O asemenea opțiune, dacă va fi introdusă, va fi separată.</p>
+      <h3>Drepturi</h3><p>Poți solicita retragerea din program, accesul, rectificarea sau ștergerea datelor, sub rezerva obligațiilor legale aplicabile.</p>
+      <div class="warning"><strong>De completat înainte de publicarea formularului:</strong> operatorul/controlorul, adresa de contact pentru protecția datelor și perioada exactă de retenție.</div>
+    </div>
+    <div class="modal-body" data-legal-en style="display:none">
+      <p>For pre-registration we collect only what is needed to administer the program: email address, language, registration date/time, accepted document versions and eligibility/reward status.</p>
+      <h3>Purpose</h3><p>Pre-registration administration, launch notification, later account activation and reservation of applicable benefits.</p>
+      <h3>Anti-abuse and Cloudflare Turnstile</h3><p>We use Cloudflare Turnstile to protect the form against bots and abusive automation. Cloudflare may process technical signals strictly necessary for the security check. Turnstile is configured without pre-clearance. The IP address is not stored in the main pre-registration table.</p>
+      <h3>Marketing</h3><p>Pre-registration is not consent for general newsletters or marketing. Any such option will be separate.</p>
+      <h3>Your rights</h3><p>You may ask to withdraw from the program or request access, rectification or deletion, subject to applicable legal obligations.</p>
+      <div class="warning"><strong>Complete before public collection:</strong> controller/operator identity, privacy contact and exact retention period.</div>
+    </div>
+  </div>
+</div>
+
+<div id="it4yModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head"><strong data-i18n="it4yTitle">IT4Y & Founding Member</strong><button class="close" type="button">×</button></div>
+    <div class="modal-body" data-legal-ro>
+      <div class="notice"><strong>Pe scurt:</strong> IT4Y sunt puncte interne de recompensă ale IsThere4You.</div>
+      <p>În viitor, IT4Y vor putea fi folosite pentru anumite funcții Premium și alte beneficii în platformă și, dacă funcția va fi activată, pentru a recompensa voluntar alți membri ai comunității.</p>
+      <p>IT4Y nu sunt bani sau criptomonedă și nu pot fi retrase în numerar.</p>
+      <p><strong>Founding Member 2026</strong> este un statut simbolic de pre-lansare. Nu reprezintă participație, investiție, calitate de asociat/acționar sau vreun drept asupra operatorului ori proiectului.</p>
+    </div>
+    <div class="modal-body" data-legal-en style="display:none">
+      <div class="notice"><strong>In short:</strong> IT4Y are internal IsThere4You reward points.</div>
+      <p>In the future, IT4Y may be used for certain Premium features and other in-platform benefits and, if enabled, to voluntarily reward other community members.</p>
+      <p>IT4Y are not money or cryptocurrency and cannot be cashed out.</p>
+      <p><strong>Founding Member 2026</strong> is a symbolic pre-launch community status. It is not an ownership interest, investment, shareholding or legal stake in the operator or project.</p>
+    </div>
+  </div>
+</div>
+
 <script>
-const copy={ro:{badge:"Se pregătește ceva nou",title:"În curând.",lead:"Lucrăm la ceva ce vrem să păstrăm surpriză pentru moment.",progress:"Pregătiri în desfășurare",working:"În lucru",note:"Revino în curând."},en:{badge:"Something new is coming",title:"Coming soon.",lead:"We're working on something we'd like to keep a surprise for now.",progress:"Preparation in progress",working:"In progress",note:"Check back soon."}};
-document.querySelectorAll(".lang-btn").forEach(btn=>{btn.addEventListener("click",()=>{const lang=btn.dataset.lang;document.documentElement.lang=lang;document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b===btn));Object.entries(copy[lang]).forEach(([key,value])=>{const el=document.querySelector(`[data-i18n="${key}"]`);if(el)el.textContent=value;});});});
+const ENDPOINT = 'https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/prelaunch-signup';
+const TURNSTILE_SITE_KEY = "0x4AAAAAAEz4QjiQUN5PUKVn";
+const MIN_HUMAN_TIME_MS = 2200;
+
+let turnstileWidgetId = null;
+let turnstileToken = "";
+let pendingSubmission = null;
+let originalButtonText = "";
+const pageLoadedAt = Date.now();
+
+const copy = {
+  ro:{
+    badge:"Pre-lansare",title:"Fii printre primii.",
+    lead:"Înscrie-te înainte de lansare. Te anunțăm când deschidem și îți rezervăm beneficiile de membru fondator.",
+    founding:"Founding Member 2026 · recompensă IT4Y rezervată",whatIt4y:"Ce sunt IT4Y?",
+    placeholder:"adresa ta de e-mail",button:"Înscrie-mă",
+    launchConsent:"Solicit preînregistrarea și sunt de acord să primesc notificarea privind lansarea IsThere4You și informațiile necesare activării contului de pre-lansare.",
+    termsPrefix:"Am citit și accept",termsLink:"Termenii pentru preînregistrare v1.0",
+    privacyPrefix:"Confirm că am luat la cunoștință",privacyLink:"Nota de informare privind datele de pre-lansare v1.0",
+    noMarketing:"Înscrierea nu te abonează automat la marketing. Orice newsletter sau comunicare promoțională va avea o opțiune separată.",
+    termsShort:"Termeni preînregistrare",privacyShort:"Confidențialitate",it4yShort:"IT4Y & Founding Member",
+    termsTitle:"Termeni pentru preînregistrarea IsThere4You — v1.0",privacyTitle:"Notă de informare pre-lansare — v1.0",it4yTitle:"IT4Y & Founding Member",
+    invalid:"Introdu o adresă de e-mail validă.",checks:"Bifează cele trei confirmări necesare pentru preînregistrare.",
+    sending:"Se înregistrează…",successTitle:"Adresa este pe lista de pre-lansare.",
+    success:"Dacă adresa era deja înscrisă, nu am creat o înregistrare duplicată. Îți vom scrie când IsThere4You se deschide.",
+    emailLabel:"Adresă înregistrată",
+    foundingSuccessTitle:"Founding Member 2026",
+    foundingSuccessText:"Statutul tău de pre-lansare și recompensa IT4Y sunt rezervate conform termenilor.",
+    verification:"Verificăm că ești o persoană reală…",verificationError:"Verificarea anti-bot nu a putut fi finalizată. Reîncearcă.",errorTitle:"Nu am putut salva înscrierea.",error:"Încearcă din nou peste câteva momente."
+  },
+  en:{
+    badge:"Pre-launch",title:"Be among the first.",
+    lead:"Join before launch. We'll notify you when we open and reserve your founding member benefits.",
+    founding:"Founding Member 2026 · IT4Y reward reserved",whatIt4y:"What are IT4Y?",
+    placeholder:"your email address",button:"Join",
+    launchConsent:"I request pre-registration and agree to receive the IsThere4You launch notification and information required to activate my pre-launch account.",
+    termsPrefix:"I have read and accept",termsLink:"Pre-registration Terms v1.0",
+    privacyPrefix:"I acknowledge",privacyLink:"Pre-launch Privacy Notice v1.0",
+    noMarketing:"Pre-registration does not automatically subscribe you to marketing. Any newsletter or promotional communications will use a separate choice.",
+    termsShort:"Pre-registration Terms",privacyShort:"Privacy",it4yShort:"IT4Y & Founding Member",
+    termsTitle:"IsThere4You Pre-registration Terms — v1.0",privacyTitle:"Pre-launch Privacy Notice — v1.0",it4yTitle:"IT4Y & Founding Member",
+    invalid:"Enter a valid email address.",checks:"Please tick all three confirmations required for pre-registration.",
+    sending:"Registering…",successTitle:"This email is on the pre-launch list.",
+    success:"If it was already registered, no duplicate entry was created. We'll write when IsThere4You opens.",
+    emailLabel:"Registered email",
+    foundingSuccessTitle:"Founding Member 2026",
+    foundingSuccessText:"Your pre-launch status and IT4Y reward are reserved under the terms.",
+    verification:"Checking that you are a real person…",verificationError:"The anti-bot verification could not be completed. Please try again.",errorTitle:"We couldn't save your registration.",error:"Please try again in a few moments."
+  }
+};
+
+let lang="ro";
+let activeMessage = null;
+let lastMaskedEmail = "";
+
+function t(k){return copy[lang][k]}
+
+function maskEmail(email){
+  const parts=email.split("@");
+  if(parts.length!==2) return email;
+  const local=parts[0];
+  const domain=parts[1];
+  const visible=local.length<=2 ? local.slice(0,1) : local.slice(0,Math.min(3,local.length-1));
+  return visible + "•••@" + domain;
+}
+
+function renderActiveMessage(){
+  if(!activeMessage) return;
+  const m=document.getElementById("message");
+  m.className="message "+activeMessage.type;
+  let extra="";
+  if(activeMessage.type==="success" && lastMaskedEmail){
+    extra=`<div class="success-email"><span class="checkmark">✓</span><span>${t("emailLabel")}: ${lastMaskedEmail}</span></div>`;
+  }
+  m.innerHTML=`<strong>${t(activeMessage.titleKey)}</strong>${t(activeMessage.textKey)}${extra}`;
+}
+
+function applyLang(next){
+  lang=next; document.documentElement.lang=next;
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b.dataset.lang===next));
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(copy[next][k])el.textContent=copy[next][k]});
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{const k=el.dataset.i18nPlaceholder;if(copy[next][k])el.placeholder=copy[next][k]});
+  document.querySelectorAll("[data-legal-ro]").forEach(el=>el.style.display=next==="ro"?"block":"none");
+  document.querySelectorAll("[data-legal-en]").forEach(el=>el.style.display=next==="en"?"block":"none");
+  renderActiveMessage();
+}
+document.querySelectorAll(".lang-btn").forEach(b=>b.addEventListener("click",()=>applyLang(b.dataset.lang)));
+
+function showMessage(type,titleKey,textKey){
+  activeMessage={type,titleKey,textKey};
+  renderActiveMessage();
+}
+function validEmail(e){return e.length>=5 && e.length<=254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
+
+document.querySelectorAll("[data-modal]").forEach(a=>a.addEventListener("click",e=>{
+  e.preventDefault();
+  const id=a.dataset.modal+"Modal";
+  const modal=document.getElementById(id);
+  modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+}));
+document.querySelectorAll(".close").forEach(b=>b.addEventListener("click",()=>{
+  const modal=b.closest(".modal-backdrop"); modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
+}));
+document.querySelectorAll(".modal-backdrop").forEach(m=>m.addEventListener("click",e=>{
+  if(e.target===m){m.classList.remove("open");m.setAttribute("aria-hidden","true")}
+}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".modal-backdrop.open").forEach(m=>m.classList.remove("open"))});
+
+
+function restoreSignupButton(){
+  const btn=document.getElementById("signup");
+  btn.disabled=false;
+  btn.textContent=originalButtonText || t("button");
+}
+
+function resetTurnstile(){
+  turnstileToken="";
+  if(window.turnstile && turnstileWidgetId!==null){
+    try{ window.turnstile.reset(turnstileWidgetId); }catch(_){}
+  }
+}
+
+function initTurnstile(){
+  if(!window.turnstile || turnstileWidgetId!==null) return;
+
+  turnstileWidgetId=window.turnstile.render("#turnstile-container",{
+    sitekey:TURNSTILE_SITE_KEY,
+    theme:"light",
+    appearance:"interaction-only",
+    execution:"execute",
+    action:"prelaunch_signup",
+
+    callback:(token)=>{
+      turnstileToken=token;
+
+      if(pendingSubmission){
+        const payload=pendingSubmission;
+        pendingSubmission=null;
+        submitRegistration(payload);
+      }
+    },
+
+    "expired-callback":()=>{
+      turnstileToken="";
+    },
+
+    "error-callback":()=>{
+      turnstileToken="";
+      pendingSubmission=null;
+      restoreSignupButton();
+      showMessage("error","errorTitle","verificationError");
+      return true;
+    }
+  });
+}
+
+async function submitRegistration(payload){
+  const btn=document.getElementById("signup");
+
+  try{
+    const res=await fetch(ENDPOINT,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        ...payload,
+        turnstileToken
+      })
+    });
+
+    const data=await res.json().catch(()=>({}));
+
+    if(res.ok && data.ok){
+      lastMaskedEmail=maskEmail(payload.email);
+      document.getElementById("signupArea").style.display="none";
+      showMessage("success","successTitle","success");
+      document.getElementById("foundingSuccess").classList.add("show");
+      return;
+    }
+
+    resetTurnstile();
+    showMessage(
+      "error",
+      "errorTitle",
+      (data.error==="turnstile_failed" ||
+       data.error==="turnstile_required" ||
+       data.error==="verification_unavailable")
+        ? "verificationError"
+        : "error"
+    );
+  }catch(err){
+    console.error(err);
+    resetTurnstile();
+    showMessage("error","errorTitle","error");
+  }finally{
+    restoreSignupButton();
+  }
+}
+
+window.addEventListener("load",()=>{
+  if(window.turnstile){
+    initTurnstile();
+  }else{
+    const timer=setInterval(()=>{
+      if(window.turnstile){
+        clearInterval(timer);
+        initTurnstile();
+      }
+    },150);
+
+    setTimeout(()=>clearInterval(timer),10000);
+  }
+});
+
+document.getElementById("signup").addEventListener("click", async()=>{
+  const email=document.getElementById("email").value.trim();
+  const launchConsent=document.getElementById("launchConsent").checked;
+  const termsAccepted=document.getElementById("termsAccepted").checked;
+  const privacyAcknowledged=document.getElementById("privacyAcknowledged").checked;
+  const website=document.getElementById("website").value;
+  const btn=document.getElementById("signup");
+
+  if(!validEmail(email)){
+    showMessage("error","errorTitle","invalid");
+    return;
+  }
+
+  if(!launchConsent||!termsAccepted||!privacyAcknowledged){
+    showMessage("error","errorTitle","checks");
+    return;
+  }
+
+  if(Date.now()-pageLoadedAt < MIN_HUMAN_TIME_MS){
+    await new Promise(r=>setTimeout(
+      r,
+      MIN_HUMAN_TIME_MS-(Date.now()-pageLoadedAt)
+    ));
+  }
+
+  originalButtonText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent=t("verification");
+
+  const payload={
+    email,
+    language:lang,
+    launchConsent,
+    termsAccepted,
+    privacyAcknowledged,
+    website
+  };
+
+  if(!window.turnstile || turnstileWidgetId===null){
+    restoreSignupButton();
+    showMessage("error","errorTitle","verificationError");
+    return;
+  }
+
+  if(turnstileToken){
+    submitRegistration(payload);
+    return;
+  }
+
+  pendingSubmission=payload;
+
+  try{
+    window.turnstile.execute(turnstileWidgetId);
+  }catch(err){
+    console.error(err);
+    pendingSubmission=null;
+    restoreSignupButton();
+    showMessage("error","errorTitle","verificationError");
+  }
+});
+applyLang("ro");
 </script>
 </body>
 </html>
