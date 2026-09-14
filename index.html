@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IsThere4You — Site în construcție</title>
+<style>
+:root{--ink:#171a18;--muted:#737b88;--border:#e1e5ea;--mint:#16ad79;--mint-soft:#e6f8f1;--indigo:#4b49db;--indigo-soft:#eef0ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;color:var(--ink);background:radial-gradient(circle at 7% 8%,rgba(75,73,219,.13),transparent 29%),radial-gradient(circle at 93% 92%,rgba(22,173,121,.14),transparent 28%),#f8f9fc}.wrap{width:min(560px,calc(100% - 28px));text-align:center;position:relative}.lang-switch{display:flex;justify-content:flex-end;margin-bottom:10px}.lang-box{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.9)}.lang-btn{border:0;background:transparent;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:850;color:var(--muted);cursor:pointer}.lang-btn.active{background:var(--indigo);color:#fff}.card{background:rgba(255,255,255,.94);border:1px solid var(--border);border-radius:30px;padding:48px 44px 42px;box-shadow:0 24px 65px rgba(56,61,75,.10)}.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--mint-soft);color:#07855c;font-size:14px;font-weight:850}.dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}.brand{margin:28px 0 12px;font-size:44px;line-height:1;font-weight:950;letter-spacing:-.055em}.brand .four{color:var(--indigo)}h1{font-size:24px;letter-spacing:-.025em;margin:18px 0 10px}.lead{font-size:17px;line-height:1.65;color:var(--muted);margin:0 auto;max-width:420px}.progress-label{margin-top:26px;display:flex;justify-content:space-between;color:#747d89;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.progress{height:8px;border-radius:999px;background:#ececf7;overflow:hidden;margin-top:8px}.progress>span{display:block;width:72%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--indigo),var(--mint))}.note{margin:24px 0 0;color:#7d8490;font-size:14px}.footer{margin-top:22px;color:#959ca7;font-size:13px}@media(max-width:560px){.card{padding:36px 22px 32px}.brand{font-size:38px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="lang-switch"><div class="lang-box" aria-label="Language selector"><button class="lang-btn active" data-lang="ro">RO</button><button class="lang-btn" data-lang="en">EN</button></div></div>
+  <section class="card">
+    <div class="badge"><span class="dot"></span> <span data-i18n="badge">Se pregătește ceva nou</span></div>
+    <div class="brand">IsThere<span class="four">4</span>You</div>
+    <h1 data-i18n="title">În curând.</h1>
+    <p class="lead"><span data-i18n="lead">Lucrăm la ceva ce vrem să păstrăm surpriză pentru moment.</span></p>
+    <div class="progress-label"><span data-i18n="progress">Pregătiri în desfășurare</span><span data-i18n="working">În lucru</span></div>
+    <div class="progress"><span></span></div>
+    <p class="note" data-i18n="note">Revino în curând.</p>
+  </section>
+  <div class="footer">© 2026 IsThere4You</div>
+</main>
+<script>
+const copy={ro:{badge:"Se pregătește ceva nou",title:"În curând.",lead:"Lucrăm la ceva ce vrem să păstrăm surpriză pentru moment.",progress:"Pregătiri în desfășurare",working:"În lucru",note:"Revino în curând."},en:{badge:"Something new is coming",title:"Coming soon.",lead:"We're working on something we'd like to keep a surprise for now.",progress:"Preparation in progress",working:"In progress",note:"Check back soon."}};
+document.querySelectorAll(".lang-btn").forEach(btn=>{btn.addEventListener("click",()=>{const lang=btn.dataset.lang;document.documentElement.lang=lang;document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b===btn));Object.entries(copy[lang]).forEach(([key,value])=>{const el=document.querySelector(`[data-i18n="${key}"]`);if(el)el.textContent=value;});});});
+</script>
+</body>
+</html>
