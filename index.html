@@ -1,1275 +1,417 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="index,follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IsThere4You — Pre-lansare</title>
-
-<link rel="icon" type="image/png" href="data:image/png;base64,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">
-<link rel="apple-touch-icon" href="data:image/png;base64,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">
-<meta name="theme-color" content="#112B4E">
-
-<meta name="description" content="IsThere4You — pre-lansare. Înscrie-te pentru a fi anunțat la deschidere."><meta name="it4y-build" content="prelaunch-contact-confirmation-v1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <style>
-:root{
-  --ink:#171a18;
-  --muted:#707887;
-  --border:rgba(218,224,232,.88);
-  --mint:#18b181;
-  --mint-soft:rgba(229,249,241,.86);
-  --indigo:#514ae2;
-  --indigo-2:#695fff;
-  --indigo-soft:rgba(238,240,255,.86);
-  --gold:#99701d;
-  --gold-soft:rgba(255,248,231,.86);
-  --danger:#a53636;
-  --danger-soft:#fff0f0;
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
-}
-*{box-sizing:border-box}
-html{background:#f7f8fc}
-body{
-  margin:0;
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  color:var(--ink);
-  background:
-    radial-gradient(circle at 8% 6%, rgba(90,86,235,.18), transparent 29%),
-    radial-gradient(circle at 91% 91%, rgba(26,191,137,.16), transparent 28%),
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.92), transparent 37%),
-    linear-gradient(180deg,#f8f9fd 0%,#f7faf9 100%);
-  overflow-x:hidden;
-}
-body:before,
-body:after{
-  content:"";
-  position:fixed;
-  width:360px;
-  height:360px;
-  border-radius:50%;
-  filter:blur(70px);
-  opacity:.22;
-  pointer-events:none;
-  z-index:0;
-}
-body:before{
-  left:-120px;
-  top:120px;
-  background:rgba(91,83,235,.58);
-}
-body:after{
-  right:-100px;
-  bottom:40px;
-  background:rgba(24,177,129,.52);
-}
-button,input{font:inherit}
-.wrap{
-  width:min(670px,calc(100% - 28px));
-  text-align:center;
-  padding:28px 0;
-  position:relative;
-  z-index:1
-}
-.lang-switch{
-  display:flex;
-  justify-content:flex-end;
-  margin-bottom:12px
-}
-.lang-box{
-  display:inline-flex;
-  gap:3px;
-  padding:4px;
-  border:1px solid rgba(214,220,228,.9);
-  border-radius:999px;
-  background:rgba(255,255,255,.78);
-  box-shadow:0 8px 28px rgba(63,70,86,.08), inset 0 1px 0 rgba(255,255,255,.8);
-  backdrop-filter:blur(12px)
-}
-.lang-btn{
-  border:0;
-  background:transparent;
-  border-radius:999px;
-  padding:8px 12px;
-  font-size:12px;
-  font-weight:900;
-  color:#737b86;
-  cursor:pointer;
-  transition:.2s ease
-}
-.lang-btn:hover{color:var(--indigo)}
-.lang-btn.active{
-  background:linear-gradient(135deg,var(--indigo),var(--indigo-2));
-  color:#fff;
-  box-shadow:0 5px 16px rgba(81,74,226,.28)
-}
-.card{
-  position:relative;
-  overflow:hidden;
-  background:rgba(255,255,255,.86);
-  border:1px solid rgba(220,225,233,.95);
-  border-radius:34px;
-  padding:52px 46px 42px;
-  box-shadow:
-    0 28px 80px rgba(56,61,75,.11),
-    0 1px 0 rgba(255,255,255,.96) inset;
-  backdrop-filter:blur(18px)
-}
-.card:before{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  left:50%;
-  top:72px;
-  transform:translateX(-50%);
-  border-radius:50%;
-  background:
-    radial-gradient(circle, rgba(81,74,226,.14) 0%, rgba(81,74,226,.06) 35%, transparent 70%);
-  filter:blur(4px);
-  pointer-events:none
-}
-.card:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.44);
-  pointer-events:none
-}
-.badge{
-  position:relative;
-  z-index:1;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:9px 15px;
-  border-radius:999px;
-  background:linear-gradient(180deg,rgba(235,252,246,.96),rgba(225,248,239,.90));
-  color:#07855c;
-  font-size:13px;
-  font-weight:900;
-  border:1px solid rgba(202,239,225,.9);
-  box-shadow:
-    0 0 0 5px rgba(24,177,129,.035),
-    0 8px 24px rgba(24,177,129,.08)
-}
-.dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--mint);
-  box-shadow:0 0 14px rgba(24,177,129,.55)
-}
-.brand{
-  position:relative;
-  z-index:1;
-  margin:32px 0 12px;
-  font-size:clamp(46px,8vw,58px);
-  line-height:1;
-  font-weight:950;
-  letter-spacing:-.065em;
-  color:#171a18;
-  text-shadow:0 1px 0 rgba(255,255,255,.95)
-}
-.brand .four{
-  color:var(--indigo);
-  position:relative;
-  text-shadow:
-    0 0 10px rgba(81,74,226,.18),
-    0 0 22px rgba(81,74,226,.12)
-}
-.brand .four:after{
-  content:"";
-  position:absolute;
-  width:42px;
-  height:42px;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:rgba(81,74,226,.14);
-  filter:blur(17px);
-  z-index:-1
-}
-h1{
-  position:relative;
-  z-index:1;
-  font-size:31px;
-  letter-spacing:-.04em;
-  margin:18px 0 10px
-}
-.lead{
-  position:relative;
-  z-index:1;
-  font-size:17px;
-  line-height:1.72;
-  color:var(--muted);
-  margin:0 auto;
-  max-width:485px
-}
-.founding{
-  position:relative;
-  z-index:1;
-  margin:31px auto 20px;
-  padding:15px 17px;
-  border:1px solid rgba(238,214,157,.92);
-  border-radius:18px;
-  background:
-    linear-gradient(180deg,rgba(255,251,240,.95),rgba(255,246,224,.88));
-  color:#80601d;
-  font-size:14px;
-  font-weight:900;
-  box-shadow:0 10px 26px rgba(183,137,39,.07)
-}
-.founding a,.legal-links a{
-  color:var(--indigo);
-  text-decoration:underline;
-  text-underline-offset:3px;
-  cursor:pointer
-}
-.form{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:10px;
-  margin-top:20px
-}
-.input{
-  min-height:54px;
-  border:1px solid rgba(209,216,225,.94);
-  border-radius:16px;
-  padding:0 16px;
-  background:rgba(255,255,255,.92);
-  outline:none;
-  color:var(--ink);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.96);
-  transition:.2s ease
-}
-.input:focus{
-  border-color:rgba(113,105,238,.75);
-  box-shadow:
-    0 0 0 4px rgba(81,74,226,.07),
-    0 8px 25px rgba(81,74,226,.06)
-}
-.submit{
-  min-height:54px;
-  border:0;
-  border-radius:16px;
-  padding:0 21px;
-  background:linear-gradient(135deg,var(--indigo),var(--indigo-2));
-  color:#fff;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 10px 24px rgba(81,74,226,.22);
-  transition:.2s ease
-}
-.submit:hover{transform:translateY(-1px);box-shadow:0 13px 28px rgba(81,74,226,.26)}
-.submit:disabled{opacity:.62;cursor:wait;transform:none}
-.checks{
-  position:relative;
-  z-index:1;
-  display:grid;
-  gap:12px;
-  margin-top:19px
-}
-.check{
-  display:flex;
-  align-items:flex-start;
-  gap:9px;
-  text-align:left;
-  color:#68727d;
-  font-size:12px;
-  line-height:1.5
-}
-.check input{margin-top:2px;accent-color:var(--indigo)}
-.check a{color:var(--indigo);font-weight:800}
-
-.turnstile-wrap{
-  position:relative;
-  z-index:1;
-  min-height:1px;
-  display:flex;
-  justify-content:center;
-  margin-top:12px;
-}
-#turnstile-container{
-  min-height:1px;
-}
-.privacy-note{
-  position:relative;
-  z-index:1;
-  margin-top:14px;
-  color:#8d949e;
-  font-size:11px;
-  line-height:1.55;
-  text-align:left
-}
-.message{
-  position:relative;
-  z-index:1;
-  display:none;
-  margin-top:18px;
-  border-radius:18px;
-  padding:16px 17px;
-  text-align:left;
-  font-size:13px;
-  line-height:1.55
-}
-.message.success{
-  display:block;
-  background:
-    linear-gradient(180deg,rgba(232,250,243,.94),rgba(225,247,238,.88));
-  border:1px solid rgba(192,232,217,.94);
-  color:#2f6a56;
-  box-shadow:0 11px 26px rgba(24,177,129,.07)
-}
-.message.error{
-  display:block;
-  background:var(--danger-soft);
-  border:1px solid #f0caca;
-  color:#863333
-}
-.message strong{display:block;margin-bottom:4px}
-.legal-links{
-  position:relative;
-  z-index:1;
-  margin-top:24px;
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  color:#7c858f;
-  font-size:12px
-}
-.footer{
-  margin-top:22px;
-  color:#959ca6;
-  font-size:12px
-}
-.honeypot{
-  position:absolute!important;
-  left:-10000px!important;
-  top:auto!important;
-  width:1px!important;
-  height:1px!important;
-  overflow:hidden!important;
-  opacity:0!important;
-  pointer-events:none!important
-}
-
-
-/* contact */
-.contact-intro{
-  margin:0 0 18px;
-  color:#68727d;
-  font-size:14px;
-  line-height:1.6
-}
-.contact-grid{display:grid;gap:14px}
-.contact-field{display:grid;gap:6px}
-.contact-label{font-size:12px;font-weight:850;color:#505a55}
-.contact-input,.contact-textarea{
-  width:100%;
-  border:1px solid #d8dde4;
-  border-radius:14px;
-  padding:12px 14px;
-  background:#fff;
-  color:var(--ink);
-  font:inherit;
-  outline:none
-}
-.contact-input:focus,.contact-textarea:focus{
-  border-color:rgba(113,105,238,.75);
-  box-shadow:0 0 0 4px rgba(81,74,226,.07)
-}
-.contact-textarea{min-height:150px;resize:vertical;line-height:1.5}
-.contact-actions{display:flex;justify-content:flex-end;margin-top:14px}
-.contact-actions .submit{min-width:150px}
-.contact-status{
-  display:none;
-  margin-top:14px;
-  border-radius:14px;
-  padding:12px 14px;
-  font-size:13px;
-  line-height:1.5
-}
-.contact-status.success{display:block;background:var(--mint-soft);border:1px solid #c8eddf;color:#2f6a56}
-.contact-status.error{display:block;background:var(--danger-soft);border:1px solid #f0caca;color:#863333}
-#contact-turnstile-container{min-height:1px}
-.contact-success-panel{
-  text-align:center;
-  padding:28px 18px 10px
-}
-.contact-success-panel[hidden]{display:none}
-.contact-success-icon{
-  width:58px;
-  height:58px;
-  margin:0 auto 14px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:var(--mint-soft);
-  border:1px solid #bfe8d8;
-  color:#07855c;
-  font-size:30px;
-  font-weight:900
-}
-.contact-success-panel strong{
-  display:block;
-  font-size:20px;
-  color:var(--ink);
-  margin-bottom:8px
-}
-.contact-success-panel p{
-  margin:0 auto 18px;
-  max-width:480px;
-  color:#5f6f68;
-  font-size:14px;
-  line-height:1.6
-}
-.contact-another{
-  min-height:44px;
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:0 16px;
-  background:#fff;
-  color:var(--indigo);
-  font-weight:850;
-  cursor:pointer
-}
-
-/* modals */
-.modal-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(18,23,21,.50);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  z-index:50;
-  backdrop-filter:blur(6px)
-}
-.modal-backdrop.open{display:flex}
-.modal{
-  width:min(760px,100%);
-  max-height:86vh;
-  overflow:auto;
-  background:rgba(255,255,255,.98);
-  border-radius:26px;
-  border:1px solid var(--border);
-  box-shadow:0 30px 80px rgba(0,0,0,.22);
-  text-align:left
-}
-.modal-head{
-  position:sticky;
-  top:0;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  padding:19px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  z-index:2
-}
-.modal-head strong{font-size:18px}
-.close{
-  border:1px solid var(--border);
-  background:#fff;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  cursor:pointer
-}
-.modal-body{
-  padding:22px;
-  color:#505a55;
-  font-size:14px;
-  line-height:1.65
-}
-.modal-body h3{color:var(--ink);font-size:16px;margin:22px 0 7px}
-.modal-body p{margin:7px 0 12px}
-.modal-body ul{padding-left:20px}
-.notice{
-  padding:12px 14px;
-  border-radius:12px;
-  background:var(--indigo-soft);
-  color:#4c4f78;
-  margin:12px 0
-}
-.warning{
-  padding:12px 14px;
-  border-radius:12px;
-  background:var(--gold-soft);
-  color:#71591f;
-  margin:12px 0
-}
-
-@media(max-width:620px){
-  .wrap{width:min(100% - 20px,670px);padding:18px 0}
-  .card{padding:38px 22px 32px;border-radius:28px}
-  .brand{font-size:43px}
-  .form{grid-template-columns:1fr}
-  .submit{width:100%}
-}
-
-.success-email{
-  margin-top:10px;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 11px;
-  border-radius:999px;
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(190,226,213,.95);
-  color:#3f6658;
-  font-size:12px;
-  font-weight:850
-}
-.success-email .checkmark{
-  width:20px;height:20px;border-radius:50%;
-  display:grid;place-items:center;
-  background:var(--mint);color:#fff;
-  font-size:12px;font-weight:900
-}
-.founding-success{
-  display:none;
-  position:relative;
-  z-index:1;
-  margin:14px auto 0;
-  padding:16px 18px;
-  border-radius:18px;
-  border:1px solid rgba(217,196,144,.9);
-  background:linear-gradient(180deg,rgba(255,251,239,.96),rgba(255,246,224,.9));
-  box-shadow:0 10px 28px rgba(167,125,34,.07);
-  color:#76591c;
-  text-align:center
-}
-.founding-success.show{display:block}
-.founding-success .title{
-  font-weight:950;
-  font-size:15px;
-  margin-bottom:4px
-}
-.founding-success .sub{
-  font-size:12px;
-  line-height:1.45;
-  color:#7c6a3f
-}
-.founding-success a{
-  color:var(--indigo);
-  font-weight:850;
-  text-decoration:underline;
-  text-underline-offset:3px
-}
-
+  :root{ --page-bg:#f7f9f8; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --page-bg:#0b0c0e; }
+  }
+  :root[data-theme="dark"]{ --page-bg:#0b0c0e; }
+  html,body{ height:100%; }
+  body{ margin:0; background:var(--page-bg); font-family:'Inter',system-ui,-apple-system,sans-serif; }
+  .no-scrollbar::-webkit-scrollbar{ display:none; }
+  .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+  @keyframes popIn{ from{ opacity:0; transform:translateY(8px) scale(.98);} to{ opacity:1; transform:translateY(0) scale(1);} }
+  .pop-in{ animation:popIn .18s ease; }
+  .hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
 </style>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
 </head>
 <body>
-<main class="wrap">
-  <div class="lang-switch">
-    <div class="lang-box" aria-label="Language selector">
-      <button class="lang-btn active" type="button" data-lang="ro">RO</button>
-      <button class="lang-btn" type="button" data-lang="en">EN</button>
-    </div>
-  </div>
-
-  <section class="card">
-    <div class="badge"><span class="dot"></span><span data-i18n="badge">Pre-lansare</span></div>
-    <div class="brand">IsThere<span class="four">4</span>You</div>
-    <h1 data-i18n="title">Fii printre primii.</h1>
-    <p class="lead" data-i18n="lead">Înscrie-te înainte de lansare. Te anunțăm când deschidem și îți rezervăm beneficiile de membru fondator.</p>
-
-    <div class="founding">
-      ✦ <span data-i18n="founding">Founding Member 2026 · recompensă IT4Y rezervată</span>
-      · <a href="#" data-modal="it4y" data-i18n="whatIt4y">Ce sunt IT4Y?</a>
-    </div>
-
-    <div id="signupArea">
-      <div class="form">
-        <input id="email" class="input" type="email" autocomplete="email" maxlength="254" data-i18n-placeholder="placeholder" placeholder="adresa ta de e-mail">
-        <button id="signup" class="submit" type="button" data-i18n="button">Înscrie-mă</button>
-      </div>
-
-      <div class="honeypot" aria-hidden="true">
-        <label>Website <input id="website" type="text" tabindex="-1" autocomplete="off"></label>
-      </div>
-
-      <div class="checks">
-        <label class="check">
-          <input id="launchConsent" type="checkbox">
-          <span data-i18n="launchConsent">Solicit preînregistrarea și sunt de acord să primesc notificarea privind lansarea IsThere4You și informațiile necesare activării contului de pre-lansare.</span>
-        </label>
-
-        <label class="check">
-          <input id="termsAccepted" type="checkbox">
-          <span><span data-i18n="termsPrefix">Am citit și accept</span> <a href="#" data-modal="terms" data-i18n="termsLink">Termenii pentru preînregistrare v1.0</a>.</span>
-        </label>
-
-        <label class="check">
-          <input id="privacyAcknowledged" type="checkbox">
-          <span><span data-i18n="privacyPrefix">Confirm că am luat la cunoștință</span> <a href="#" data-modal="privacy" data-i18n="privacyLink">Nota de informare privind datele de pre-lansare v1.0</a>.</span>
-        </label>
-      </div>
-
-      <div class="turnstile-wrap" aria-live="polite">
-        <div id="turnstile-container"></div>
-      </div>
-
-      <div class="privacy-note" data-i18n="noMarketing">Înscrierea nu te abonează automat la marketing. Orice newsletter sau comunicare promoțională va avea o opțiune separată.</div>
-    </div>
-
-    <div id="message" class="message" role="status" aria-live="polite"></div>
-
-    <div id="foundingSuccess" class="founding-success">
-      <div class="title" data-i18n="foundingSuccessTitle">Founding Member 2026</div>
-      <div class="sub">
-        <span data-i18n="foundingSuccessText">Statutul tău de pre-lansare este rezervat conform termenilor.</span>
-        · <a href="#" data-modal="it4y" data-i18n="whatIt4y">Ce sunt IT4Y?</a>
-      </div>
-    </div>
-
-    <div class="legal-links">
-      <a href="#" data-modal="terms" data-i18n="termsShort">Termeni preînregistrare</a>
-      <span>·</span>
-      <a href="#" data-modal="privacy" data-i18n="privacyShort">Confidențialitate</a>
-      <span>·</span>
-      <a href="#" data-modal="contact" data-i18n="contactShort">Contact</a>
-      <span>·</span>
-      <a href="#" data-modal="it4y" data-i18n="it4yShort">IT4Y & Founding Member</a>
-    </div>
-  </section>
-
-  <div class="footer">© 2026 IsThere4You</div>
-</main>
-
-<div id="termsModal" class="modal-backdrop" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true">
-    <div class="modal-head"><strong data-i18n="termsTitle">Termeni pentru preînregistrarea IsThere4You — v1.0</strong><button class="close" type="button">×</button></div>
-    <div class="modal-body" data-legal-ro>
-      <p>Prin înscrierea în programul de pre-lansare IsThere4You, utilizatorul solicită înregistrarea adresei sale de e-mail pentru a fi informat cu privire la lansarea platformei și pentru rezervarea beneficiilor aferente programului de pre-lansare.</p>
-      <h3>1. Preînregistrarea</h3>
-      <p>Preînregistrarea nu reprezintă crearea unui cont activ și nu conferă acces imediat la serviciile platformei. IsThere4You se află în dezvoltare și nu garantează o anumită dată de lansare.</p>
-      <h3>2. Founding Member 2026</h3>
-      <p>„Founding Member 2026” este exclusiv un statut simbolic și promoțional al comunității, destinat anumitor utilizatori eligibili înscriși în perioada de pre-lansare.</p>
-      <p>Acest statut nu conferă calitatea de fondator, cofondator, asociat, acționar, investitor, creditor, partener, reprezentant ori mandatar al operatorului și nu conferă drepturi asupra proiectului, codului, domeniului, mărcii, veniturilor, profiturilor ori activelor IsThere4You.</p>
-      <p>Statutul nu conferă drepturi de vot, administrare, control, dividende, distribuiri de active sau alte drepturi patrimoniale. Este personal și netransmisibil.</p>
-      <h3>3. IT4Y Points</h3>
-      <p>IT4Y Points sunt unități digitale interne de recompensă ale ecosistemului IsThere4You. În funcție de funcționalitățile disponibile, ele vor putea fi utilizate pentru anumite funcții sau beneficii Premium, alte avantaje interne și, dacă această funcție va fi activată, pentru recompensarea voluntară a altor utilizatori ca formă de mulțumire.</p>
-      <p>IT4Y Points nu reprezintă bani, monedă electronică, criptomonedă, instrument financiar, depozit, titlu de valoare ori creanță împotriva operatorului. Nu pot fi retrase în numerar și nu există nicio promisiune privind aprecierea ori convertibilitatea lor.</p>
-      <h3>4. Recompensa de pre-lansare</h3>
-      <p>Preînregistrarea poate conferi eligibilitatea pentru o recompensă IT4Y rezervată. „Reserved” nu înseamnă că punctele au fost deja emise sau că pot fi utilizate imediat. Acordarea efectivă poate fi condiționată de crearea și verificarea contului și de regulile programului aplicabile la momentul activării.</p>
-      <h3>5. Înscrieri neeligibile</h3>
-      <p>Înscrierile multiple, automate, fictive, frauduloase ori efectuate pentru manipularea mecanismului de recompense pot fi eliminate. O singură persoană nu dobândește beneficii multiple prin folosirea mai multor adrese.</p>
-      <h3>6. Modificarea programului</h3>
-      <p>IsThere4You poate modifica pentru viitor mecanismul pre-lansării ori programul IT4Y din motive tehnice, operaționale sau legale. Modificările semnificative care afectează beneficiile deja rezervate vor fi comunicate atunci când natura lor impune acest lucru.</p>
-      <div class="warning"><strong>De completat înainte de publicarea formularului:</strong> identitatea juridică a operatorului și datele oficiale de contact.</div>
-    </div>
-    <div class="modal-body" data-legal-en style="display:none">
-      <p>By joining the IsThere4You pre-launch program, the user asks us to register their email address for launch notification and reservation of applicable pre-launch benefits.</p>
-      <h3>1. Pre-registration</h3><p>Pre-registration does not create an active account or immediate access to the platform. IsThere4You is under development and no specific launch date is guaranteed.</p>
-      <h3>2. Founding Member 2026</h3><p>“Founding Member 2026” is solely a symbolic and promotional community status. It does not make the user a founder, co-founder, shareholder, investor, creditor, partner, representative or agent of the operator and grants no ownership, voting, management, profit, dividend or asset rights.</p>
-      <h3>3. IT4Y Points</h3><p>IT4Y Points are internal digital reward units. Depending on available features, they may be used for certain Premium functions or internal benefits and, if enabled, as a voluntary way to thank other users.</p><p>IT4Y Points are not money, electronic money, cryptocurrency, a financial instrument, deposit, security or claim against the operator. They cannot be cashed out and carry no promise of appreciation or convertibility.</p>
-      <h3>4. Pre-launch reward</h3><p>Pre-registration may reserve eligibility for an IT4Y reward. “Reserved” does not mean that points have already been issued or can be used immediately. Actual granting may require account creation/verification and compliance with the program rules applicable at activation.</p>
-      <h3>5. Ineligible registrations</h3><p>Multiple, automated, fictitious or fraudulent registrations may be removed.</p>
-      <div class="warning"><strong>Complete before public collection:</strong> the operator’s legal identity and official contact details.</div>
-    </div>
-  </div>
-</div>
-
-<div id="privacyModal" class="modal-backdrop" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true">
-    <div class="modal-head"><strong data-i18n="privacyTitle">Notă de informare pre-lansare — v1.0</strong><button class="close" type="button">×</button></div>
-    <div class="modal-body" data-legal-ro>
-      <p>Pentru preînregistrare colectăm numai datele necesare administrării programului: adresa de e-mail, limba, data/ora înscrierii, versiunile documentelor acceptate și starea eligibilității/recompensei.</p>
-      <h3>Scop</h3><p>Administrarea preînregistrării, notificarea lansării, activarea ulterioară a contului și rezervarea beneficiilor aferente programului.</p>
-      <h3>Anti-abuz și Cloudflare Turnstile</h3><p>Folosim Cloudflare Turnstile pentru protejarea formularului împotriva boților și automatizărilor abuzive. Cloudflare poate prelucra semnale tehnice strict necesare verificării de securitate. Am configurat Turnstile fără pre-clearance. IP-ul nu este stocat în tabela principală de preînregistrări.</p>
-      <h3>Marketing</h3><p>Preînregistrarea nu reprezintă consimțământ pentru newsletter ori marketing general. O asemenea opțiune, dacă va fi introdusă, va fi separată.</p>
-      <h3>Mesaje trimise prin formularul de contact</h3><p>Dacă folosești formularul de contact, prelucrăm adresa de e-mail, subiectul, mesajul, limba și data/ora transmiterii, precum și numele dacă alegi să îl completezi. Datele sunt folosite pentru primirea, gestionarea și soluționarea solicitării. Mesajele sunt stocate în infrastructura Supabase; IP-ul brut nu este stocat în tabela de mesaje. Formularul folosește Cloudflare Turnstile și rate limiting pentru prevenirea abuzului.</p>
-      <h3>Drepturi</h3><p>Poți solicita retragerea din program, accesul, rectificarea sau ștergerea datelor, sub rezerva obligațiilor legale aplicabile.</p>
-      <div class="warning"><strong>De completat înainte de publicarea formularului:</strong> operatorul/controlorul, adresa de contact pentru protecția datelor și perioada exactă de retenție.</div>
-    </div>
-    <div class="modal-body" data-legal-en style="display:none">
-      <p>For pre-registration we collect only what is needed to administer the program: email address, language, registration date/time, accepted document versions and eligibility/reward status.</p>
-      <h3>Purpose</h3><p>Pre-registration administration, launch notification, later account activation and reservation of applicable benefits.</p>
-      <h3>Anti-abuse and Cloudflare Turnstile</h3><p>We use Cloudflare Turnstile to protect the form against bots and abusive automation. Cloudflare may process technical signals strictly necessary for the security check. Turnstile is configured without pre-clearance. The IP address is not stored in the main pre-registration table.</p>
-      <h3>Marketing</h3><p>Pre-registration is not consent for general newsletters or marketing. Any such option will be separate.</p>
-      <h3>Messages sent through the contact form</h3><p>If you use the contact form, we process your email address, subject, message, language and submission date/time, plus your name if you choose to provide it. The data is used to receive, manage and answer your request. Messages are stored in the Supabase infrastructure; the raw IP address is not stored in the messages table. The form uses Cloudflare Turnstile and rate limiting to prevent abuse.</p>
-      <h3>Your rights</h3><p>You may ask to withdraw from the program or request access, rectification or deletion, subject to applicable legal obligations.</p>
-      <div class="warning"><strong>Complete before public collection:</strong> controller/operator identity, privacy contact and exact retention period.</div>
-    </div>
-  </div>
-</div>
-
-<div id="it4yModal" class="modal-backdrop" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true">
-    <div class="modal-head"><strong data-i18n="it4yTitle">IT4Y & Founding Member</strong><button class="close" type="button">×</button></div>
-    <div class="modal-body" data-legal-ro>
-      <div class="notice"><strong>Pe scurt:</strong> IT4Y sunt puncte interne de recompensă ale IsThere4You.</div>
-      <p>În viitor, IT4Y vor putea fi folosite pentru anumite funcții Premium și alte beneficii în platformă și, dacă funcția va fi activată, pentru a recompensa voluntar alți membri ai comunității.</p>
-      <p>IT4Y nu sunt bani sau criptomonedă și nu pot fi retrase în numerar.</p>
-      <p><strong>Founding Member 2026</strong> este un statut simbolic de pre-lansare. Nu reprezintă participație, investiție, calitate de asociat/acționar sau vreun drept asupra operatorului ori proiectului.</p>
-    </div>
-    <div class="modal-body" data-legal-en style="display:none">
-      <div class="notice"><strong>In short:</strong> IT4Y are internal IsThere4You reward points.</div>
-      <p>In the future, IT4Y may be used for certain Premium features and other in-platform benefits and, if enabled, to voluntarily reward other community members.</p>
-      <p>IT4Y are not money or cryptocurrency and cannot be cashed out.</p>
-      <p><strong>Founding Member 2026</strong> is a symbolic pre-launch community status. It is not an ownership interest, investment, shareholding or legal stake in the operator or project.</p>
-    </div>
-  </div>
-</div>
-
-
-<div id="contactModal" class="modal-backdrop" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
-    <div class="modal-head">
-      <strong id="contactModalTitle" data-i18n="contactTitle">Contact IsThere4You</strong>
-      <button class="close" type="button" aria-label="Închide">×</button>
-    </div>
-    <div class="modal-body">
-      <p class="contact-intro" data-i18n="contactIntro">Trimite-ne un mesaj. Adresa de e-mail a operatorului nu este publicată pe site; răspunsul va fi trimis la adresa indicată de tine.</p>
-
-      <div class="contact-grid" id="contactFormArea">
-        <label class="contact-field">
-          <span class="contact-label" data-i18n="contactNameLabel">Nume (opțional)</span>
-          <input id="contactName" class="contact-input" type="text" maxlength="120" autocomplete="name" data-i18n-placeholder="contactNamePlaceholder" placeholder="numele tău">
-        </label>
-
-        <label class="contact-field">
-          <span class="contact-label" data-i18n="contactEmailLabel">E-mail</span>
-          <input id="contactEmail" class="contact-input" type="email" maxlength="254" autocomplete="email" data-i18n-placeholder="contactEmailPlaceholder" placeholder="adresa ta de e-mail">
-        </label>
-
-        <label class="contact-field">
-          <span class="contact-label" data-i18n="contactSubjectLabel">Subiect</span>
-          <input id="contactSubject" class="contact-input" type="text" maxlength="200" data-i18n-placeholder="contactSubjectPlaceholder" placeholder="despre ce vrei să ne scrii">
-        </label>
-
-        <label class="contact-field">
-          <span class="contact-label" data-i18n="contactMessageLabel">Mesaj</span>
-          <textarea id="contactMessage" class="contact-textarea" maxlength="5000" data-i18n-placeholder="contactMessagePlaceholder" placeholder="scrie mesajul aici"></textarea>
-        </label>
-
-        <div class="honeypot" aria-hidden="true">
-          <label>Website <input id="contactWebsite" type="text" tabindex="-1" autocomplete="off"></label>
-        </div>
-
-        <label class="check">
-          <input id="contactPrivacyAcknowledged" type="checkbox">
-          <span><span data-i18n="contactPrivacyPrefix">Confirm că am luat la cunoștință informațiile privind prelucrarea datelor din</span> <a href="#" data-modal="privacy" data-i18n="privacyShort">Confidențialitate</a>.</span>
-        </label>
-
-        <div class="turnstile-wrap" aria-live="polite">
-          <div id="contact-turnstile-container"></div>
-        </div>
-      </div>
-
-      <div class="contact-actions">
-        <button id="contactSend" class="submit" type="button" data-i18n="contactSend">Trimite mesajul</button>
-      </div>
-      <div id="contactStatus" class="contact-status" role="status" aria-live="polite"></div>
-
-      <div id="contactSuccessPanel" class="contact-success-panel" role="status" aria-live="polite" hidden>
-        <div class="contact-success-icon" aria-hidden="true">✓</div>
-        <strong id="contactSuccessTitle" tabindex="-1" data-i18n="contactSuccessTitle">Mesaj trimis</strong>
-        <p data-i18n="contactSuccess">Mesajul a fost primit și salvat. Îți vom răspunde la adresa de e-mail indicată.</p>
-        <button id="contactAnother" class="contact-another" type="button" data-i18n="contactAnother">Trimite alt mesaj</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- integrated preview: approved UI + existing production verification/contact logic -->
+<div id="root"></div>
 <script>
-const ENDPOINT = 'https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/prelaunch-signup';
-const CONTACT_ENDPOINT = 'https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/contact-message';
-const TURNSTILE_SITE_KEY = "0x4AAAAAAEz4QjiQUN5P0KVn";
-const MIN_HUMAN_TIME_MS = 2200;
+(function(){
+"use strict";
+var e = React.createElement;
+var useState = React.useState, useEffect = React.useEffect;
 
-let turnstileWidgetId = null;
-let turnstileToken = "";
-let pendingSubmission = null;
-let originalButtonText = "";
-let contactTurnstileWidgetId = null;
-let contactTurnstileToken = "";
-let contactPendingSubmission = null;
-let contactOriginalButtonText = "";
-const pageLoadedAt = Date.now();
+/* ---------- persistență locală ---------- */
+var PREFIX = "i4y_";
+function loadJSON(key, fallback){
+  try{
+    var raw = window.localStorage.getItem(PREFIX + key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(err){ console.error("Citire storage esuata", err); return fallback; }
+}
+function saveJSON(key, value){
+  try{ window.localStorage.setItem(PREFIX + key, JSON.stringify(value)); }
+  catch(err){ console.error("Scriere storage esuata", err); }
+}
+/* =====================================================================
+   SCHEMA SUPABASE ASTEPTATA (ajustează COLUMNS mai jos dacă tabelele
+   tale existente au alte nume de coloane, în loc să rulezi acest SQL):
 
-const copy = {
-  ro:{
-    badge:"Pre-lansare",title:"Fii printre primii.",
-    lead:"Înscrie-te înainte de lansare. Te anunțăm când deschidem și îți rezervăm beneficiile de membru fondator.",
-    founding:"Founding Member 2026 · recompensă IT4Y rezervată",whatIt4y:"Ce sunt IT4Y?",
-    placeholder:"adresa ta de e-mail",button:"Înscrie-mă",
-    launchConsent:"Solicit preînregistrarea și sunt de acord să primesc notificarea privind lansarea IsThere4You și informațiile necesare activării contului de pre-lansare.",
-    termsPrefix:"Am citit și accept",termsLink:"Termenii pentru preînregistrare v1.0",
-    privacyPrefix:"Confirm că am luat la cunoștință",privacyLink:"Nota de informare privind datele de pre-lansare v1.0",
-    noMarketing:"Înscrierea nu te abonează automat la marketing. Orice newsletter sau comunicare promoțională va avea o opțiune separată.",
-    termsShort:"Termeni preînregistrare",privacyShort:"Confidențialitate",contactShort:"Contact",it4yShort:"IT4Y & Founding Member",
-    termsTitle:"Termeni pentru preînregistrarea IsThere4You — v1.0",privacyTitle:"Notă de informare pre-lansare — v1.0",it4yTitle:"IT4Y & Founding Member",
-    contactTitle:"Contact IsThere4You",contactIntro:"Trimite-ne un mesaj. Adresa de e-mail a operatorului nu este publicată pe site; răspunsul va fi trimis la adresa indicată de tine.",
-    contactNameLabel:"Nume (opțional)",contactNamePlaceholder:"numele tău",contactEmailLabel:"E-mail",contactEmailPlaceholder:"adresa ta de e-mail",contactSubjectLabel:"Subiect",contactSubjectPlaceholder:"despre ce vrei să ne scrii",contactMessageLabel:"Mesaj",contactMessagePlaceholder:"scrie mesajul aici",contactPrivacyPrefix:"Confirm că am luat la cunoștință informațiile privind prelucrarea datelor din",contactSend:"Trimite mesajul",
-    contactInvalid:"Completează o adresă de e-mail validă, un subiect de cel puțin 2 caractere și un mesaj de cel puțin 5 caractere.",contactPrivacyRequired:"Confirmă că ai luat la cunoștință informațiile privind prelucrarea datelor.",contactSending:"Se trimite…",contactSuccessTitle:"Mesaj trimis",contactSuccess:"Mesajul a fost primit și salvat. Îți vom răspunde la adresa de e-mail indicată.",contactAnother:"Trimite alt mesaj",contactError:"Mesajul nu a putut fi trimis. Încearcă din nou peste câteva momente.",contactRateLimited:"Ai trimis prea multe solicitări într-un interval scurt. Încearcă din nou mai târziu.",
-    invalid:"Introdu o adresă de e-mail validă.",checks:"Bifează cele trei confirmări necesare pentru preînregistrare.",
-    sending:"Se înregistrează…",successTitle:"Adresa este pe lista de pre-lansare.",
-    success:"Dacă adresa era deja înscrisă, nu am creat o înregistrare duplicată. Îți vom scrie când IsThere4You se deschide.",
-    emailLabel:"Adresă înregistrată",
-    foundingSuccessTitle:"Founding Member 2026",
-    foundingSuccessText:"Statutul tău de pre-lansare și recompensa IT4Y sunt rezervate conform termenilor.",
-    verification:"Verificăm că ești o persoană reală…",verificationError:"Verificarea anti-bot nu a putut fi finalizată. Reîncearcă.",errorTitle:"Nu am putut salva înscrierea.",error:"Încearcă din nou peste câteva momente."
+   create table if not exists preregistrations (
+     id uuid primary key default gen_random_uuid(),
+     email text not null unique,
+     lang text,
+     terms_version text,
+     turnstile_token text,
+     created_at timestamptz not null default now()
+   );
+   alter table preregistrations enable row level security;
+   create policy "public can insert preregistrations"
+     on preregistrations for insert to anon with check (true);
+
+   create table if not exists contact_messages (
+     id uuid primary key default gen_random_uuid(),
+     name text,
+     email text not null,
+     subject text not null,
+     message text not null,
+     lang text,
+     turnstile_token text,
+     created_at timestamptz not null default now()
+   );
+   alter table contact_messages enable row level security;
+   create policy "public can insert contact_messages"
+     on contact_messages for insert to anon with check (true);
+   ===================================================================== */
+function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+/* ---------- conexiuni de producție păstrate din versiunea live ---------- */
+var PRELAUNCH_ENDPOINT = "https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/prelaunch-signup";
+var CONTACT_ENDPOINT = "https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/contact-message";
+var TURNSTILE_SITE_KEY = "0x4AAAAAAEz4QjiQUN5P0KVn";
+var MIN_HUMAN_TIME_MS = 2200;
+var pageLoadedAt = Date.now();
+
+function loadTurnstileScript(cb){
+  if(window.turnstile){ cb(); return; }
+  if(document.getElementById("cf-turnstile-script")){
+    var iv=setInterval(function(){ if(window.turnstile){ clearInterval(iv); cb(); } },150);
+    setTimeout(function(){ clearInterval(iv); },10000);
+    return;
+  }
+  var s=document.createElement("script");
+  s.id="cf-turnstile-script";
+  s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+  s.async=true; s.defer=true;
+  s.onload=function(){ cb(); };
+  document.head.appendChild(s);
+}
+
+/* ---------- iconite simple (SVG) ---------- */
+function Icon(paths, extra){
+  var props = Object.assign({ viewBox:"0 0 24 24", fill:"none", stroke:"currentColor",
+    strokeWidth:2, strokeLinecap:"round", strokeLinejoin:"round" }, extra || {});
+  return e("svg", props, paths);
+}
+var IconX = function(p){ return Icon([e("line",{key:1,x1:6,y1:6,x2:18,y2:18}), e("line",{key:2,x1:18,y1:6,x2:6,y2:18})], p); };
+var IconCheckCircle = function(p){ return Icon([e("circle",{key:1,cx:12,cy:12,r:9}), e("path",{key:2,d:"M8.3 12.4l2.4 2.3 4.7-4.9"})], p); };
+var IconSparkle = function(p){ return Icon([e("path",{key:1,d:"M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"}), e("path",{key:2,d:"M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"})], p); };
+var IconPin = function(p){ return Icon([e("path",{key:1,d:"M12 21s6.5-6 6.5-11A6.5 6.5 0 0 0 5.5 10c0 5 6.5 11 6.5 11z"}), e("circle",{key:2,cx:12,cy:10,r:2.2})], p); };
+var IconGlobe = function(p){ return Icon([e("circle",{key:1,cx:12,cy:12,r:9}), e("path",{key:2,d:"M3 12h18"}), e("path",{key:3,d:"M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"})], p); };
+var IconAlert = function(p){ return Icon([e("path",{key:1,d:"M12 4l9 16H3z"}), e("line",{key:2,x1:12,y1:10,x2:12,y2:14}), e("circle",{key:3,cx:12,cy:17,r:0.9,fill:"currentColor",stroke:"none"})], p); };
+
+/* ---------- traduceri ---------- */
+var STR = {
+  ro: {
+    tag:"Fii printre primii.",
+    heroBody:"Înscrie-te înainte de lansare. Te anunțăm când deschidem.",
+    emailLabel:"Adresa ta de email", emailPh:"tu@email.com",
+    infoLine:"Locuri Founding Member 2026 rezervate primilor înscriși",
+    consentA:"Sunt de acord să fiu contactat(ă) la lansare și accept ", termsLink:"Termenii pentru preînregistrare", consentMid:" și ", privacyLink:"Nota de informare privind datele", consentB:".",
+    founding:"Founding Member 2026", whatIsIT4Y:"Ce sunt IT4Y?", it4yBtn:"Ce sunt IT4Y & Founding Member?",
+    submit:"Înscrie-mă",
+    disclaimer:"Înscrierea nu te abonează automat la marketing. Orice newsletter sau comunicare promoțională va avea o opțiune separată.",
+    successTitle:"Ești înscris(ă)!", successBody:"Te anunțăm la adresa ", successBody2:" când deschidem.",
+    reservedNote:"Statutul tău de pre-lansare este rezervat conform termenilor.",
+    footerTerms:"Termeni preînregistrare", footerPrivacy:"Confidențialitate", footerContact:"Contact", footerIT4Y:"IT4Y & Founding Member",
+    copyright:"© 2026 IsThere4You",
+    errEmail:"Introdu o adresă de e-mail validă.", errConsent:"Bifează confirmarea necesară pentru a continua.",
+    errDup:"Există deja o înscriere cu acest e-mail.",
+    errGeneric:"A apărut o eroare la trimitere. Încearcă din nou în câteva secunde.",
+    errNotConfigured:"Formularul nu e conectat încă la baza de date (vezi CONFIG în cod).",
+    sending:"Se trimite...", verification:"Verificăm că ești o persoană reală…", verificationError:"Verificarea anti-bot nu a putut fi finalizată. Reîncearcă.", contactRateLimited:"Ai trimis prea multe solicitări într-un interval scurt. Încearcă din nou mai târziu.",
+    notConfiguredBanner:"⚠️ Backend neconfigurat: completează SUPABASE_URL și SUPABASE_ANON_KEY în CONFIG, la începutul fișierului, înainte de publicare.",
+    contactTitle:"Contact IsThere4You",
+    contactBody:"Trimite-ne un mesaj. Adresa de e-mail a operatorului nu este publicată pe site; răspunsul va fi trimis la adresa indicată de tine.",
+    nameLabel:"Nume (opțional)", subjectLabel:"Subiect", messageLabel:"Mesaj",
+    contactConsentA:"Confirm că am luat la cunoștință informațiile privind prelucrarea datelor din ", contactConsentLink:"Confidențialitate", contactConsentB:".",
+    contactSubmit:"Trimite mesajul",
+    contactErr:"Completează emailul, subiectul, mesajul și bifează căsuța de mai jos.",
+    contactSuccessTitle:"Mesaj trimis", contactSuccessBody:"Mesajul a fost primit și salvat. Îți vom răspunde la adresa de e-mail indicată.",
+    contactAgain:"Trimite alt mesaj", close:"Închide",
+    localBadge:"Prototip #3", localNote:"Funcții reale simulate local — înscrierile și mesajele sunt salvate doar în acest browser, fără server real.",
+    termsTitle:"Termeni pentru preînregistrare — v1.0", privacyTitle:"Notă de informare — pre-lansare v1.0", it4yTitle:"IT4Y & Founding Member"
   },
-  en:{
-    badge:"Pre-launch",title:"Be among the first.",
-    lead:"Join before launch. We'll notify you when we open and reserve your founding member benefits.",
-    founding:"Founding Member 2026 · IT4Y reward reserved",whatIt4y:"What are IT4Y?",
-    placeholder:"your email address",button:"Join",
-    launchConsent:"I request pre-registration and agree to receive the IsThere4You launch notification and information required to activate my pre-launch account.",
-    termsPrefix:"I have read and accept",termsLink:"Pre-registration Terms v1.0",
-    privacyPrefix:"I acknowledge",privacyLink:"Pre-launch Privacy Notice v1.0",
-    noMarketing:"Pre-registration does not automatically subscribe you to marketing. Any newsletter or promotional communications will use a separate choice.",
-    termsShort:"Pre-registration Terms",privacyShort:"Privacy",contactShort:"Contact",it4yShort:"IT4Y & Founding Member",
-    termsTitle:"IsThere4You Pre-registration Terms — v1.0",privacyTitle:"Pre-launch Privacy Notice — v1.0",it4yTitle:"IT4Y & Founding Member",
-    contactTitle:"Contact IsThere4You",contactIntro:"Send us a message. The operator's email address is not published on the website; any reply will be sent to the address you provide.",
-    contactNameLabel:"Name (optional)",contactNamePlaceholder:"your name",contactEmailLabel:"Email",contactEmailPlaceholder:"your email address",contactSubjectLabel:"Subject",contactSubjectPlaceholder:"what would you like to write about",contactMessageLabel:"Message",contactMessagePlaceholder:"write your message here",contactPrivacyPrefix:"I acknowledge the information about data processing in",contactSend:"Send message",
-    contactInvalid:"Enter a valid email address, a subject of at least 2 characters and a message of at least 5 characters.",contactPrivacyRequired:"Please acknowledge the information about data processing.",contactSending:"Sending…",contactSuccessTitle:"Message sent",contactSuccess:"Your message has been received and saved. We will reply to the email address you provided.",contactAnother:"Send another message",contactError:"Your message could not be sent. Please try again in a few moments.",contactRateLimited:"Too many requests were sent in a short period. Please try again later.",
-    invalid:"Enter a valid email address.",checks:"Please tick all three confirmations required for pre-registration.",
-    sending:"Registering…",successTitle:"This email is on the pre-launch list.",
-    success:"If it was already registered, no duplicate entry was created. We'll write when IsThere4You opens.",
-    emailLabel:"Registered email",
-    foundingSuccessTitle:"Founding Member 2026",
-    foundingSuccessText:"Your pre-launch status and IT4Y reward are reserved under the terms.",
-    verification:"Checking that you are a real person…",verificationError:"The anti-bot verification could not be completed. Please try again.",errorTitle:"We couldn't save your registration.",error:"Please try again in a few moments."
+  en: {
+    tag:"Be among the first.",
+    heroBody:"Sign up before launch. We'll notify you when we open.",
+    emailLabel:"Your email address", emailPh:"you@email.com",
+    infoLine:"Founding Member 2026 spots reserved for early sign-ups",
+    consentA:"I agree to be contacted at launch and I accept the ", termsLink:"Pre-registration Terms", consentMid:" and the ", privacyLink:"Privacy Notice", consentB:".",
+    founding:"Founding Member 2026", whatIsIT4Y:"What is IT4Y?", it4yBtn:"What is IT4Y & Founding Member?",
+    submit:"Sign me up",
+    disclaimer:"Signing up doesn't automatically subscribe you to marketing. Any newsletter or promotional message will have a separate opt-in.",
+    successTitle:"You're signed up!", successBody:"We'll notify you at ", successBody2:" when we open.",
+    reservedNote:"Your pre-launch status is reserved under the terms above.",
+    footerTerms:"Pre-registration terms", footerPrivacy:"Privacy", footerContact:"Contact", footerIT4Y:"IT4Y & Founding Member",
+    copyright:"© 2026 IsThere4You",
+    errEmail:"Enter a valid email address.", errConsent:"Check the required confirmation to continue.",
+    errDup:"There's already a sign-up with this email.",
+    errGeneric:"Something went wrong while sending. Please try again in a moment.",
+    errNotConfigured:"The form isn't connected to the database yet (see CONFIG in the code).",
+    sending:"Sending...", verification:"Checking that you are a real person…", verificationError:"The anti-bot verification could not be completed. Please try again.", contactRateLimited:"Too many requests were sent in a short period. Please try again later.",
+    notConfiguredBanner:"⚠️ Backend not configured: fill in SUPABASE_URL and SUPABASE_ANON_KEY in CONFIG, at the top of the file, before publishing.",
+    contactTitle:"Contact IsThere4You",
+    contactBody:"Send us a message. The operator's email address isn't published on the site; we'll reply to the address you provide.",
+    nameLabel:"Name (optional)", subjectLabel:"Subject", messageLabel:"Message",
+    contactConsentA:"I confirm I've reviewed the data-processing information in the ", contactConsentLink:"Privacy notice", contactConsentB:".",
+    contactSubmit:"Send message",
+    contactErr:"Fill in the email, subject, message, and check the box below.",
+    contactSuccessTitle:"Message sent", contactSuccessBody:"Your message was received and saved. We'll reply at the address you provided.",
+    contactAgain:"Send another message", close:"Close",
+    localBadge:"Prototype #3", localNote:"Functions are simulated locally — sign-ups and messages are saved only in this browser, with no real server.",
+    termsTitle:"Pre-registration terms — v1.0", privacyTitle:"Privacy notice — pre-launch v1.0", it4yTitle:"IT4Y & Founding Member"
   }
 };
 
-let lang="ro";
-let activeMessage = null;
-let lastMaskedEmail = "";
+/* ---------- continut modale (parafrazat, RO/EN) ---------- */
+var TERMS = {
+  ro:[
+    {h:"1. Preînregistrarea", p:"Preînregistrarea nu creează un cont activ și nu oferă acces imediat la platformă. IsThere4You este în dezvoltare, iar data exactă a lansării nu este garantată."},
+    {h:"2. Founding Member 2026", p:"„Founding Member 2026” este un statut simbolic și promoțional, oferit anumitor utilizatori eligibili înscriși în perioada de pre-lansare. Nu conferă calitatea de fondator, asociat, acționar, investitor sau creditor, și nu dă drepturi asupra codului, mărcii, veniturilor sau activelor proiectului. Statutul nu implică drept de vot, administrare sau distribuire de profit — este personal și netransmisibil."},
+    {h:"3. Puncte IT4Y", p:"IT4Y Points sunt unități digitale interne de recompensă. Pot fi folosite, în funcție de funcționalitățile disponibile, pentru beneficii Premium sau alte avantaje din platformă, și eventual pentru a răspunde altor utilizatori. IT4Y Points nu sunt bani, monedă electronică, criptomonedă sau instrument financiar — nu pot fi retrase în numerar și nu există nicio garanție de valoare sau convertibilitate."},
+    {h:"4. Recompensa de pre-lansare", p:"Preînregistrarea poate conferi eligibilitate pentru o recompensă IT4Y „rezervată”. Rezervarea nu înseamnă emitere sau utilizare imediată — acordarea depinde de crearea și verificarea contului, conform regulilor programului valabile la acel moment."},
+    {h:"5. Înscrieri neeligibile", p:"Înscrierile multiple, automate, fictive sau frauduloase pot fi eliminate. O singură persoană nu poate obține beneficii multiple folosind mai multe adrese de e-mail."},
+    {h:"6. Modificarea programului", p:"Mecanismul de pre-lansare și programul IT4Y pot fi modificate din motive tehnice, operaționale sau legale. Modificările care afectează beneficii deja rezervate vor fi comunicate."}
+  ],
+  en:[
+    {h:"1. Pre-registration", p:"Pre-registration doesn't create an active account or grant immediate platform access. IsThere4You is under development and no exact launch date is guaranteed."},
+    {h:"2. Founding Member 2026", p:"\u201cFounding Member 2026\u201d is a symbolic, promotional status offered to certain eligible users who sign up during pre-launch. It doesn't make you a founder, shareholder, investor, or creditor, and grants no rights over the code, brand, revenue, or assets of the project. It carries no voting, management, or profit-sharing rights, and is personal and non-transferable."},
+    {h:"3. IT4Y Points", p:"IT4Y Points are internal digital reward units. Depending on available features, they may be used for Premium benefits or other in-platform perks, and potentially to thank other users. They are not money, e-money, cryptocurrency, or a financial instrument — they cannot be cashed out and carry no guarantee of value or convertibility."},
+    {h:"4. Pre-launch reward", p:"Pre-registration may make you eligible for a \u201creserved\u201d IT4Y reward. \u201cReserved\u201d doesn't mean issued or usable yet — actual granting depends on account creation and verification, per the program rules in force at that time."},
+    {h:"5. Ineligible sign-ups", p:"Multiple, automated, fake, or fraudulent sign-ups may be removed. One person cannot obtain multiple benefits by using several email addresses."},
+    {h:"6. Changes to the program", p:"The pre-launch mechanism and the IT4Y program may change for technical, operational, or legal reasons. Changes affecting already-reserved benefits will be communicated."}
+  ]
+};
+var PRIVACY = {
+  ro:[
+    {h:"Ce colectăm", p:"Pentru preînregistrare colectăm doar datele necesare administrării programului: adresa de e-mail, limba, data și ora înscrierii, versiunile documentelor acceptate și starea eligibilității pentru recompensă."},
+    {h:"Scop", p:"Administrarea preînregistrării, notificarea lansării, activarea ulterioară a contului și rezervarea beneficiilor aferente programului."},
+    {h:"Protecție anti-abuz", p:"Folosim Cloudflare Turnstile pentru protejarea formularului împotriva boților și automatizărilor abuzive. Verificarea este realizată server-side înainte ca înscrierea să fie acceptată."},
+    {h:"Marketing", p:"Preînregistrarea nu reprezintă consimțământ pentru newsletter sau marketing general. O asemenea opțiune, dacă va exista, va fi separată."},
+    {h:"Mesajele de contact", p:"Dacă folosești formularul de contact, prelucrăm adresa de e-mail, subiectul, mesajul, limba și data/ora transmiterii, plus numele dacă alegi să-l completezi. Mesajele sunt transmise prin infrastructura Supabase, iar formularul folosește Cloudflare Turnstile și limitarea frecvenței solicitărilor pentru prevenirea abuzului."},
+    {h:"Drepturile tale", p:"Poți solicita retragerea din program, accesul, rectificarea sau ștergerea datelor tale, sub rezerva obligațiilor legale aplicabile."}
+  ],
+  en:[
+    {h:"What we collect", p:"For pre-registration we collect only what's needed to run the program: email address, language, sign-up date/time, accepted document versions, and reward-eligibility status."},
+    {h:"Purpose", p:"Administering pre-registration, launch notification, later account activation, and reserving applicable program benefits."},
+    {h:"Anti-abuse protection", p:"We use Cloudflare Turnstile to protect the form against bots and abusive automation. Verification is performed server-side before a registration is accepted."},
+    {h:"Marketing", p:"Pre-registration is not consent for a newsletter or general marketing. Any such option, if introduced, will be separate."},
+    {h:"Contact messages", p:"If you use the contact form, we process your email, subject, message, language and submission date/time, plus your name if you choose to provide it. Messages are sent through the Supabase infrastructure, and the form uses Cloudflare Turnstile and request rate limiting to prevent abuse."},
+    {h:"Your rights", p:"You may ask to withdraw from the program, or request access, correction, or deletion of your data, subject to applicable legal obligations."}
+  ]
+};
+var IT4Y = {
+  ro:[
+    {h:null, p:"Pe scurt: IT4Y sunt puncte interne de recompensă ale IsThere4You."},
+    {h:null, p:"În viitor, IT4Y vor putea fi folosite pentru funcții Premium și alte beneficii din platformă și, dacă funcția va fi activată, pentru a răsplăti voluntar alți membri ai comunității."},
+    {h:null, p:"IT4Y nu sunt bani sau criptomonedă și nu pot fi retrase în numerar."},
+    {h:"Founding Member 2026", p:"Este un statut simbolic de pre-lansare. Nu reprezintă participație, investiție sau vreo calitate de asociat/acționar — și nu dă niciun drept legal asupra operatorului sau proiectului."}
+  ],
+  en:[
+    {h:null, p:"In short: IT4Y are IsThere4You's internal reward points."},
+    {h:null, p:"In the future, IT4Y may be used for Premium features and other in-platform benefits and, if enabled, to voluntarily reward other community members."},
+    {h:null, p:"IT4Y are not money or cryptocurrency and cannot be cashed out."},
+    {h:"Founding Member 2026", p:"A symbolic pre-launch community status. It is not an ownership interest, investment, or shareholding — and grants no legal claim on the operator or the project."}
+  ]
+};
 
-function t(k){return copy[lang][k]}
+/* ---------- componenta principala ---------- */
+function App(){
+  var langState=useState("ro"); var lang=langState[0], setLang=langState[1];
+  var modalState=useState(null); var modal=modalState[0], setModal=modalState[1];
 
-function maskEmail(email){
-  const parts=email.split("@");
-  if(parts.length!==2) return email;
-  const local=parts[0];
-  const domain=parts[1];
-  const visible=local.length<=2 ? local.slice(0,1) : local.slice(0,Math.min(3,local.length-1));
-  return visible + "•••@" + domain;
-}
+  var preregFormState=useState({email:"",consent:false,hp:""});
+  var preregForm=preregFormState[0], setPreregForm=preregFormState[1];
+  var preregDoneState=useState(false); var preregDone=preregDoneState[0], setPreregDone=preregDoneState[1];
+  var preregEmailState=useState(""); var preregEmail=preregEmailState[0], setPreregEmail=preregEmailState[1];
+  var preregErrState=useState(""); var preregErr=preregErrState[0], setPreregErr=preregErrState[1];
+  var preregLoadingState=useState(false); var preregLoading=preregLoadingState[0], setPreregLoading=preregLoadingState[1];
 
-function renderActiveMessage(){
-  if(!activeMessage) return;
-  const m=document.getElementById("message");
-  m.className="message "+activeMessage.type;
-  let extra="";
-  if(activeMessage.type==="success" && lastMaskedEmail){
-    extra=`<div class="success-email"><span class="checkmark">✓</span><span>${t("emailLabel")}: ${lastMaskedEmail}</span></div>`;
-  }
-  m.innerHTML=`<strong>${t(activeMessage.titleKey)}</strong>${t(activeMessage.textKey)}${extra}`;
-}
+  var contactFormState=useState({name:"",email:"",subject:"",message:"",hp:""});
+  var contactForm=contactFormState[0], setContactForm=contactFormState[1];
+  var contactConsentState=useState(false); var contactConsent=contactConsentState[0], setContactConsent=contactConsentState[1];
+  var contactDoneState=useState(false); var contactDone=contactDoneState[0], setContactDone=contactDoneState[1];
+  var contactErrState=useState(""); var contactErr=contactErrState[0], setContactErr=contactErrState[1];
+  var contactLoadingState=useState(false); var contactLoading=contactLoadingState[0], setContactLoading=contactLoadingState[1];
 
-function applyLang(next){
-  lang=next; document.documentElement.lang=next;
-  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b.dataset.lang===next));
-  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(copy[next][k])el.textContent=copy[next][k]});
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{const k=el.dataset.i18nPlaceholder;if(copy[next][k])el.placeholder=copy[next][k]});
-  document.querySelectorAll("[data-legal-ro]").forEach(el=>el.style.display=next==="ro"?"block":"none");
-  document.querySelectorAll("[data-legal-en]").forEach(el=>el.style.display=next==="en"?"block":"none");
-  renderActiveMessage();
-}
-document.querySelectorAll(".lang-btn").forEach(b=>b.addEventListener("click",()=>applyLang(b.dataset.lang)));
+  var preregTokenRef=React.useRef("");
+  var preregWidgetRef=React.useRef(null);
+  var preregNodeRef=React.useRef(null);
+  var pendingPreregRef=React.useRef(null);
+  var contactTokenRef=React.useRef("");
+  var contactWidgetRef=React.useRef(null);
+  var contactNodeRef=React.useRef(null);
+  var pendingContactRef=React.useRef(null);
 
-function showMessage(type,titleKey,textKey){
-  activeMessage={type,titleKey,textKey};
-  renderActiveMessage();
-}
-function validEmail(e){return e.length>=5 && e.length<=254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
+  var t=STR[lang];
 
-document.querySelectorAll("[data-modal]").forEach(a=>a.addEventListener("click",e=>{
-  e.preventDefault();
-  const id=a.dataset.modal+"Modal";
-  const modal=document.getElementById(id);
-  if(!modal) return;
-  modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
-  if(id==="contactModal") setTimeout(initContactTurnstile,0);
-}));
-document.querySelectorAll(".close").forEach(b=>b.addEventListener("click",()=>{
-  const modal=b.closest(".modal-backdrop"); modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
-}));
-document.querySelectorAll(".modal-backdrop").forEach(m=>m.addEventListener("click",e=>{
-  if(e.target===m){m.classList.remove("open");m.setAttribute("aria-hidden","true")}
-}));
-document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".modal-backdrop.open").forEach(m=>m.classList.remove("open"))});
-
-
-function restoreSignupButton(){
-  const btn=document.getElementById("signup");
-  btn.disabled=false;
-  btn.textContent=originalButtonText || t("button");
-}
-
-function resetTurnstile(){
-  turnstileToken="";
-  if(window.turnstile && turnstileWidgetId!==null){
-    try{ window.turnstile.reset(turnstileWidgetId); }catch(_){}
-  }
-}
-
-function initTurnstile(){
-  if(!window.turnstile || turnstileWidgetId!==null) return;
-
-  turnstileWidgetId=window.turnstile.render("#turnstile-container",{
-    sitekey:TURNSTILE_SITE_KEY,
-    theme:"light",
-    appearance:"interaction-only",
-    execution:"execute",
-    action:"prelaunch_signup",
-
-    callback:(token)=>{
-      turnstileToken=token;
-
-      if(pendingSubmission){
-        const payload=pendingSubmission;
-        pendingSubmission=null;
-        submitRegistration(payload);
-      }
-    },
-
-    "expired-callback":()=>{
-      turnstileToken="";
-    },
-
-    "error-callback":()=>{
-      turnstileToken="";
-      pendingSubmission=null;
-      restoreSignupButton();
-      showMessage("error","errorTitle","verificationError");
-      return true;
-    }
-  });
-}
-
-async function submitRegistration(payload){
-  const btn=document.getElementById("signup");
-
-  try{
-    const res=await fetch(ENDPOINT,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        ...payload,
-        turnstileToken
-      })
+  function renderPreregTurnstile(){
+    if(!window.turnstile || !preregNodeRef.current || preregWidgetRef.current!==null) return;
+    preregWidgetRef.current=window.turnstile.render(preregNodeRef.current,{
+      sitekey:TURNSTILE_SITE_KEY, theme:"light", appearance:"interaction-only", execution:"execute", action:"prelaunch_signup",
+      callback:function(token){
+        preregTokenRef.current=token;
+        var payload=pendingPreregRef.current;
+        if(payload){ pendingPreregRef.current=null; sendPrereg(payload,token); }
+      },
+      "expired-callback":function(){ preregTokenRef.current=""; },
+      "error-callback":function(){ preregTokenRef.current=""; pendingPreregRef.current=null; setPreregLoading(false); setPreregErr(STR[lang].verificationError); return true; }
     });
-
-    const data=await res.json().catch(()=>({}));
-
-    if(res.ok && data.ok){
-      lastMaskedEmail=maskEmail(payload.email);
-      document.getElementById("signupArea").style.display="none";
-      showMessage("success","successTitle","success");
-      document.getElementById("foundingSuccess").classList.add("show");
-      return;
-    }
-
-    resetTurnstile();
-    showMessage(
-      "error",
-      "errorTitle",
-      (data.error==="turnstile_failed" ||
-       data.error==="turnstile_required" ||
-       data.error==="verification_unavailable")
-        ? "verificationError"
-        : "error"
-    );
-  }catch(err){
-    console.error(err);
-    resetTurnstile();
-    showMessage("error","errorTitle","error");
-  }finally{
-    restoreSignupButton();
   }
-}
 
-
-function showContactStatus(type,key){
-  const el=document.getElementById("contactStatus");
-  if(!el) return;
-  el.className="contact-status "+type;
-  el.textContent=t(key);
-}
-
-function clearContactStatus(){
-  const el=document.getElementById("contactStatus");
-  if(!el) return;
-  el.className="contact-status";
-  el.textContent="";
-}
-
-function restoreContactButton(){
-  const btn=document.getElementById("contactSend");
-  if(!btn) return;
-  btn.disabled=false;
-  btn.textContent=contactOriginalButtonText || t("contactSend");
-}
-
-function resetContactTurnstile(){
-  contactTurnstileToken="";
-  if(window.turnstile && contactTurnstileWidgetId!==null){
-    try{ window.turnstile.reset(contactTurnstileWidgetId); }catch(_){}
-  }
-}
-
-function initContactTurnstile(){
-  if(!window.turnstile || contactTurnstileWidgetId!==null) return;
-  const container=document.getElementById("contact-turnstile-container");
-  if(!container) return;
-
-  contactTurnstileWidgetId=window.turnstile.render("#contact-turnstile-container",{
-    sitekey:TURNSTILE_SITE_KEY,
-    theme:"light",
-    appearance:"interaction-only",
-    execution:"execute",
-    action:"contact_message",
-
-    callback:(token)=>{
-      contactTurnstileToken=token;
-      if(contactPendingSubmission){
-        const payload=contactPendingSubmission;
-        contactPendingSubmission=null;
-        submitContactMessage(payload);
-      }
-    },
-
-    "expired-callback":()=>{ contactTurnstileToken=""; },
-
-    "error-callback":()=>{
-      contactTurnstileToken="";
-      contactPendingSubmission=null;
-      restoreContactButton();
-      showContactStatus("error","verificationError");
-      return true;
-    }
-  });
-}
-
-async function submitContactMessage(payload){
-  try{
-    const res=await fetch(CONTACT_ENDPOINT,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({...payload,turnstileToken:contactTurnstileToken})
+  function renderContactTurnstile(){
+    if(!window.turnstile || !contactNodeRef.current || contactWidgetRef.current!==null) return;
+    contactWidgetRef.current=window.turnstile.render(contactNodeRef.current,{
+      sitekey:TURNSTILE_SITE_KEY, theme:"light", appearance:"interaction-only", execution:"execute", action:"contact_message",
+      callback:function(token){
+        contactTokenRef.current=token;
+        var payload=pendingContactRef.current;
+        if(payload){ pendingContactRef.current=null; sendContact(payload,token); }
+      },
+      "expired-callback":function(){ contactTokenRef.current=""; },
+      "error-callback":function(){ contactTokenRef.current=""; pendingContactRef.current=null; setContactLoading(false); setContactErr(STR[lang].verificationError); return true; }
     });
+  }
 
-    const data=await res.json().catch(()=>({}));
+  useEffect(function(){ loadTurnstileScript(renderPreregTurnstile); },[]);
+  useEffect(function(){
+    if(modal!=="contact") return;
+    var timer=setTimeout(function(){ loadTurnstileScript(renderContactTurnstile); },0);
+    return function(){ clearTimeout(timer); };
+  },[modal]);
 
-    if(res.ok && data.ok){
-      clearContactStatus();
+  function resetPreregTurnstile(){
+    preregTokenRef.current="";
+    if(window.turnstile && preregWidgetRef.current!==null){ try{ window.turnstile.reset(preregWidgetRef.current); }catch(e){} }
+  }
+  function resetContactTurnstile(){
+    contactTokenRef.current="";
+    if(window.turnstile && contactWidgetRef.current!==null){ try{ window.turnstile.reset(contactWidgetRef.current); }catch(e){} }
+  }
 
-      document.getElementById("contactSubject").value="";
-      document.getElementById("contactMessage").value="";
-      document.getElementById("contactWebsite").value="";
-      document.getElementById("contactPrivacyAcknowledged").checked=false;
+  async function sendPrereg(payload,token){
+    try{
+      var res=await fetch(PRELAUNCH_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({},payload,{turnstileToken:token}))});
+      var data={}; try{ data=await res.json(); }catch(e){}
+      if(res.ok && data.ok){ setPreregEmail(payload.email); setPreregDone(true); setPreregErr(""); return; }
+      resetPreregTurnstile();
+      if(data && (data.error==="turnstile_failed"||data.error==="turnstile_required"||data.error==="verification_unavailable")) setPreregErr(STR[lang].verificationError);
+      else setPreregErr(STR[lang].errGeneric);
+    }catch(err){ console.error(err); resetPreregTurnstile(); setPreregErr(STR[lang].errGeneric); }
+    finally{ setPreregLoading(false); }
+  }
 
-      const formArea=document.getElementById("contactFormArea");
-      const actions=document.querySelector("#contactModal .contact-actions");
-      const intro=document.querySelector("#contactModal .contact-intro");
-      const successPanel=document.getElementById("contactSuccessPanel");
+  async function submitPrereg(){
+    var email=preregForm.email.trim().toLowerCase();
+    if(!isValidEmail(email)){ setPreregErr(t.errEmail); return; }
+    if(!preregForm.consent){ setPreregErr(t.errConsent); return; }
+    if(preregForm.hp && preregForm.hp.trim()!==""){ setPreregDone(true); setPreregEmail(email); setPreregErr(""); return; }
+    var elapsed=Date.now()-pageLoadedAt;
+    if(elapsed<MIN_HUMAN_TIME_MS) await new Promise(function(resolve){ setTimeout(resolve,MIN_HUMAN_TIME_MS-elapsed); });
+    setPreregLoading(true); setPreregErr("");
+    var payload={email:email,language:lang,launchConsent:true,termsAccepted:true,privacyAcknowledged:true,website:preregForm.hp};
+    if(!window.turnstile || preregWidgetRef.current===null){ setPreregLoading(false); setPreregErr(t.verificationError); return; }
+    if(preregTokenRef.current){ sendPrereg(payload,preregTokenRef.current); return; }
+    pendingPreregRef.current=payload;
+    try{ window.turnstile.execute(preregWidgetRef.current); }
+    catch(err){ console.error(err); pendingPreregRef.current=null; setPreregLoading(false); setPreregErr(t.verificationError); }
+  }
 
-      if(formArea) formArea.hidden=true;
-      if(actions) actions.hidden=true;
-      if(intro) intro.hidden=true;
-      if(successPanel){
-        successPanel.hidden=false;
-        successPanel.scrollIntoView({behavior:"smooth",block:"center"});
-      }
-
-      const successTitle=document.getElementById("contactSuccessTitle");
-      if(successTitle) setTimeout(()=>successTitle.focus(),50);
-
+  async function sendContact(payload,token){
+    try{
+      var res=await fetch(CONTACT_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({},payload,{turnstileToken:token}))});
+      var data={}; try{ data=await res.json(); }catch(e){}
+      if(res.ok && data.ok){ setContactDone(true); setContactErr(""); resetContactTurnstile(); return; }
       resetContactTurnstile();
-      return;
-    }
-
-    resetContactTurnstile();
-    if(data.error==="rate_limited"){
-      showContactStatus("error","contactRateLimited");
-    }else if(
-      data.error==="turnstile_failed" ||
-      data.error==="turnstile_required" ||
-      data.error==="verification_unavailable"
-    ){
-      showContactStatus("error","verificationError");
-    }else{
-      showContactStatus("error","contactError");
-    }
-  }catch(err){
-    console.error(err);
-    resetContactTurnstile();
-    showContactStatus("error","contactError");
-  }finally{
-    restoreContactButton();
-  }
-}
-
-window.addEventListener("load",()=>{
-  if(window.turnstile){
-    initTurnstile();
-  }else{
-    const timer=setInterval(()=>{
-      if(window.turnstile){
-        clearInterval(timer);
-        initTurnstile();
-      }
-    },150);
-
-    setTimeout(()=>clearInterval(timer),10000);
-  }
-});
-
-document.getElementById("signup").addEventListener("click", async()=>{
-  const email=document.getElementById("email").value.trim();
-  const launchConsent=document.getElementById("launchConsent").checked;
-  const termsAccepted=document.getElementById("termsAccepted").checked;
-  const privacyAcknowledged=document.getElementById("privacyAcknowledged").checked;
-  const website=document.getElementById("website").value;
-  const btn=document.getElementById("signup");
-
-  if(!validEmail(email)){
-    showMessage("error","errorTitle","invalid");
-    return;
+      if(data && data.error==="rate_limited") setContactErr(STR[lang].contactRateLimited);
+      else if(data && (data.error==="turnstile_failed"||data.error==="turnstile_required"||data.error==="verification_unavailable")) setContactErr(STR[lang].verificationError);
+      else setContactErr(STR[lang].errGeneric);
+    }catch(err){ console.error(err); resetContactTurnstile(); setContactErr(STR[lang].errGeneric); }
+    finally{ setContactLoading(false); }
   }
 
-  if(!launchConsent||!termsAccepted||!privacyAcknowledged){
-    showMessage("error","errorTitle","checks");
-    return;
+  function submitContact(){
+    var name=contactForm.name.trim(), email=contactForm.email.trim().toLowerCase(), subject=contactForm.subject.trim(), message=contactForm.message.trim();
+    if(name.length>120 || !isValidEmail(email) || subject.length<2 || subject.length>200 || message.length<5 || message.length>5000 || !contactConsent){ setContactErr(t.contactErr); return; }
+    if(contactForm.hp && contactForm.hp.trim()!==""){ setContactDone(true); setContactErr(""); return; }
+    setContactLoading(true); setContactErr("");
+    var payload={name:name,email:email,subject:subject,message:message,language:lang,privacyAcknowledged:true,website:contactForm.hp};
+    if(!window.turnstile || contactWidgetRef.current===null){ setContactLoading(false); setContactErr(t.verificationError); return; }
+    if(contactTokenRef.current){ sendContact(payload,contactTokenRef.current); return; }
+    pendingContactRef.current=payload;
+    try{ window.turnstile.execute(contactWidgetRef.current); }
+    catch(err){ console.error(err); pendingContactRef.current=null; setContactLoading(false); setContactErr(t.verificationError); }
   }
 
-  if(Date.now()-pageLoadedAt < MIN_HUMAN_TIME_MS){
-    await new Promise(r=>setTimeout(
-      r,
-      MIN_HUMAN_TIME_MS-(Date.now()-pageLoadedAt)
+  function resetContact(){
+    setContactForm({name:"",email:"",subject:"",message:"",hp:""}); setContactConsent(false); setContactDone(false); setContactErr(""); resetContactTurnstile();
+  }
+
+  function Header(){
+    return e("header",{className:"sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-black/[0.05]"},
+      e("div",{className:"max-w-3xl mx-auto px-6 h-16 flex items-center justify-between"},
+        e("div",{className:"flex items-center gap-2"},e("div",{className:"w-8 h-8 rounded-full bg-[#111] flex items-center justify-center text-white font-bold text-[13px]"},"Is"),e("span",{className:"font-bold text-[17px] tracking-tight text-[#111]"},"IsThere4You")),
+        e("div",{className:"flex items-center gap-2.5 text-[12px] font-semibold"},
+          e("button",{onClick:function(){setLang("ro");},className:"transition "+(lang==="ro"?"text-[#111]":"text-[#111]/30 hover:text-[#111]/60")},"RO"),e("span",{className:"text-[#111]/20"},"·"),
+          e("button",{onClick:function(){setLang("en");},className:"transition "+(lang==="en"?"text-[#111]":"text-[#111]/30 hover:text-[#111]/60")},"EN"),e(IconSparkle,{className:"w-3.5 h-3.5 text-[#c96b83] ml-1"})
+        )
+      )
+    );
+  }
+
+  function Hero(){ return e("div",{className:"max-w-xl mx-auto px-6 pt-14 pb-6 text-center"},e("h1",{className:"text-[34px] sm:text-[42px] font-bold leading-[1.1] tracking-tight text-[#111]"},t.tag),e("p",{className:"mt-3 text-[14.5px] leading-[1.5] text-[#6f7d72] max-w-[380px] mx-auto"},t.heroBody)); }
+
+  function PreregForm(){
+    if(preregDone) return e("div",{className:"max-w-md mx-auto px-6"},e("div",{className:"bg-white border border-[#f0f0f0] rounded-[24px] p-7 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] pop-in"},
+      e("div",{className:"w-14 h-14 mx-auto rounded-full bg-[#dcfce7] flex items-center justify-center"},e(IconCheckCircle,{className:"w-7 h-7 text-emerald-600"})),
+      e("h3",{className:"mt-4 font-bold text-[19px] text-[#111]"},t.successTitle),e("p",{className:"mt-1.5 text-[13px] text-[#6f7d72]"},t.successBody,e("span",{className:"font-semibold text-[#111]"},preregEmail),t.successBody2),
+      e("div",{className:"mt-4 inline-flex items-center gap-1.5"},e(IconSparkle,{className:"w-3.5 h-3.5 text-[#c96b83]"}),e("span",{className:"text-[11px] font-bold text-[#c96b83]"},t.founding)),e("p",{className:"mt-1.5 text-[12px] text-[#6f7d72]"},t.reservedNote),e("button",{onClick:function(){setModal("it4y");},className:"mt-4 h-10 px-4 rounded-full border border-[#111]/10 text-[12px] font-semibold text-[#111] hover:bg-[#f7f9f8] transition"},t.it4yBtn)
+    ));
+    return e("div",{className:"max-w-md mx-auto px-6"},e("div",{className:"bg-white border border-[#f0f0f0] rounded-[24px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"},
+      e("label",{className:"text-[12px] font-bold text-[#111]"},t.emailLabel),
+      e("input",{value:preregForm.email,onChange:function(ev){setPreregForm(Object.assign({},preregForm,{email:ev.target.value}));},placeholder:t.emailPh,type:"email",maxLength:254,autoComplete:"email",className:"mt-1.5 w-full h-[54px] px-4 rounded-[14px] bg-[#fdf1e8] border border-[#f3e0d0] text-[15px] font-medium text-[#111] placeholder:text-[#111]/30 outline-none focus:border-[#e0b98f] transition"}),
+      e("label",{className:"hp-field","aria-hidden":"true"},"Website",e("input",{tabIndex:-1,autoComplete:"off",value:preregForm.hp,onChange:function(ev){setPreregForm(Object.assign({},preregForm,{hp:ev.target.value}));}})),
+      e("div",{className:"mt-3 flex items-center justify-center gap-1.5"},e(IconPin,{className:"w-3.5 h-3.5 text-[#c96b83]"}),e("span",{className:"text-[12px] font-medium text-[#c96b83]"},t.infoLine)),
+      e("label",{className:"mt-4 flex items-start gap-2.5 cursor-pointer"},e("input",{type:"checkbox",checked:preregForm.consent,onChange:function(ev){setPreregForm(Object.assign({},preregForm,{consent:ev.target.checked}));},className:"mt-0.5 w-4 h-4 accent-[#111]"}),e("span",{className:"text-[12px] leading-[1.45] text-[#6f7d72]"},t.consentA,e("button",{type:"button",onClick:function(ev){ev.preventDefault();setModal("terms");},className:"font-semibold text-[#111] underline decoration-dotted underline-offset-2"},t.termsLink),t.consentMid,e("button",{type:"button",onClick:function(ev){ev.preventDefault();setModal("privacy");},className:"font-semibold text-[#111] underline decoration-dotted underline-offset-2"},t.privacyLink),t.consentB)),
+      e("div",{className:"mt-3 flex justify-center min-h-[1px]"},e("div",{ref:preregNodeRef})),
+      preregErr&&e("div",{className:"mt-3 flex items-center gap-1.5 text-[12px] text-red-600 font-medium"},e(IconAlert,{className:"w-3.5 h-3.5 shrink-0"}),preregErr),
+      e("button",{onClick:submitPrereg,disabled:preregLoading,className:"mt-4 w-full h-[52px] rounded-[14px] bg-[#111] text-white font-semibold text-[14px] flex items-center justify-center gap-2 hover:bg-black active:scale-[0.98] transition disabled:opacity-60 disabled:active:scale-100"},preregLoading?t.verification:t.submit,!preregLoading&&e("span",null,"→")),
+      e("button",{onClick:function(){setModal("it4y");},className:"mt-2.5 w-full h-[48px] rounded-[14px] border border-[#111]/10 bg-white text-[#111] font-semibold text-[13px] hover:bg-[#f7f9f8] transition"},t.it4yBtn),e("p",{className:"mt-3 text-[11px] leading-[1.4] text-center text-[#111]/35"},t.disclaimer)
     ));
   }
 
-  originalButtonText=btn.textContent;
-  btn.disabled=true;
-  btn.textContent=t("verification");
+  function Footer(){ return e("footer",{className:"max-w-xl mx-auto px-6 py-14 text-center"},e("div",{className:"flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12px] font-medium text-[#6f7d72]"},e("button",{onClick:function(){setModal("terms");},className:"hover:text-[#111] underline-offset-4 hover:underline"},t.footerTerms),e("button",{onClick:function(){setModal("privacy");},className:"hover:text-[#111] underline-offset-4 hover:underline"},t.footerPrivacy),e("button",{onClick:function(){setModal("contact");},className:"hover:text-[#111] underline-offset-4 hover:underline"},t.footerContact)),e("p",{className:"mt-4 text-[11px] text-[#111]/30"},t.copyright)); }
 
-  const payload={
-    email,
-    language:lang,
-    launchConsent,
-    termsAccepted,
-    privacyAcknowledged,
-    website
-  };
+  function LegalModal(title,blocks,onClose){ return e("div",{className:"fixed inset-0 z-40 flex items-center justify-center p-4"},e("div",{onClick:onClose,className:"absolute inset-0 bg-black/50 backdrop-blur-[2px]"}),e("div",{className:"relative w-full max-w-[480px] max-h-[80vh] bg-white rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.3)] pop-in flex flex-col"},e("div",{className:"flex items-center gap-2 p-6 pb-4 border-b border-black/[0.06]"},e("h3",{className:"font-bold text-[16px] text-[#111]"},title),e("button",{onClick:onClose,className:"ml-auto w-8 h-8 rounded-full bg-[#f5f6f7] flex items-center justify-center shrink-0"},e(IconX,{className:"w-4 h-4"}))),e("div",{className:"p-6 pt-4 overflow-y-auto space-y-4"},blocks.map(function(b,i){return e("div",{key:i},b.h&&e("p",{className:"font-bold text-[13px] text-[#111]"},b.h),e("p",{className:"mt-1 text-[13px] leading-[1.55] text-[#111]/70"},b.p));})),e("div",{className:"p-4 pt-2 border-t border-black/[0.06]"},e("button",{onClick:onClose,className:"w-full h-11 rounded-full bg-[#f5f6f7] text-[#111] font-semibold text-[13px] hover:bg-gray-100 transition"},t.close)))); }
 
-  if(!window.turnstile || turnstileWidgetId===null){
-    restoreSignupButton();
-    showMessage("error","errorTitle","verificationError");
-    return;
-  }
+  function ContactModal(){ return e("div",{className:"fixed inset-0 z-40 flex items-center justify-center p-4"},e("div",{onClick:function(){setModal(null);},className:"absolute inset-0 bg-black/50 backdrop-blur-[2px]"}),e("div",{className:"relative w-full max-w-[420px] bg-white rounded-[24px] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3)] pop-in max-h-[86vh] overflow-y-auto"},e("button",{onClick:function(){setModal(null);},className:"absolute right-4 top-4 w-8 h-8 rounded-full bg-[#f5f6f7] flex items-center justify-center"},e(IconX,{className:"w-4 h-4"})),contactDone?e("div",{className:"text-center pt-4"},e("div",{className:"w-14 h-14 mx-auto rounded-full bg-[#dcfce7] flex items-center justify-center"},e(IconCheckCircle,{className:"w-7 h-7 text-emerald-600"})),e("h3",{className:"mt-4 font-bold text-[18px] text-[#111]"},t.contactSuccessTitle),e("p",{className:"mt-1.5 text-[13px] text-[#111]/60 leading-[1.5]"},t.contactSuccessBody),e("button",{onClick:resetContact,className:"mt-5 h-11 px-6 rounded-full bg-[#111] text-white font-semibold text-[13px]"},t.contactAgain)):e(React.Fragment,null,e("h3",{className:"font-bold text-[16px] text-[#111] pr-8"},t.contactTitle),e("p",{className:"mt-1.5 text-[12px] leading-[1.5] text-[#111]/60"},t.contactBody),e("div",{className:"mt-5 space-y-3"},
+    e("div",null,e("label",{className:"text-[11px] font-semibold uppercase tracking-wide text-[#111]/50"},t.nameLabel),e("input",{value:contactForm.name,maxLength:120,onChange:function(ev){setContactForm(Object.assign({},contactForm,{name:ev.target.value}));},className:"mt-1 w-full h-11 px-4 rounded-[12px] bg-[#f7f9f8] border border-black/5 text-[13px] outline-none focus:border-[#111]/20"})),
+    e("div",null,e("label",{className:"text-[11px] font-semibold uppercase tracking-wide text-[#111]/50"},t.emailLabel),e("input",{value:contactForm.email,type:"email",maxLength:254,autoComplete:"email",onChange:function(ev){setContactForm(Object.assign({},contactForm,{email:ev.target.value}));},placeholder:t.emailPh,className:"mt-1 w-full h-11 px-4 rounded-[12px] bg-[#f7f9f8] border border-black/5 text-[13px] outline-none focus:border-[#111]/20"})),
+    e("div",null,e("label",{className:"text-[11px] font-semibold uppercase tracking-wide text-[#111]/50"},t.subjectLabel),e("input",{value:contactForm.subject,maxLength:200,onChange:function(ev){setContactForm(Object.assign({},contactForm,{subject:ev.target.value}));},className:"mt-1 w-full h-11 px-4 rounded-[12px] bg-[#f7f9f8] border border-black/5 text-[13px] outline-none focus:border-[#111]/20"})),
+    e("div",null,e("label",{className:"text-[11px] font-semibold uppercase tracking-wide text-[#111]/50"},t.messageLabel),e("textarea",{value:contactForm.message,maxLength:5000,onChange:function(ev){setContactForm(Object.assign({},contactForm,{message:ev.target.value}));},className:"mt-1 w-full min-h-[96px] p-3 rounded-[12px] bg-[#f7f9f8] border border-black/5 text-[13px] leading-[1.4] outline-none focus:border-[#111]/20 resize-none"})),
+    e("label",{className:"hp-field","aria-hidden":"true"},"Website",e("input",{tabIndex:-1,autoComplete:"off",value:contactForm.hp,onChange:function(ev){setContactForm(Object.assign({},contactForm,{hp:ev.target.value}));}})),
+    e("label",{className:"flex items-start gap-2.5 cursor-pointer pt-1"},e("input",{type:"checkbox",checked:contactConsent,onChange:function(ev){setContactConsent(ev.target.checked);},className:"mt-0.5 w-4 h-4 accent-[#111]"}),e("span",{className:"text-[12px] leading-[1.45] text-[#111]/70"},t.contactConsentA,e("button",{type:"button",onClick:function(ev){ev.preventDefault();setModal("privacy");},className:"font-semibold text-[#c96b83] underline decoration-dotted underline-offset-2"},t.contactConsentLink),t.contactConsentB)),
+    e("div",{className:"flex justify-center min-h-[1px]"},e("div",{ref:contactNodeRef})),contactErr&&e("div",{className:"flex items-center gap-1.5 text-[12px] text-red-600 font-medium"},e(IconAlert,{className:"w-3.5 h-3.5 shrink-0"}),contactErr),e("button",{onClick:submitContact,disabled:contactLoading,className:"w-full h-12 rounded-full bg-[#111] text-white font-semibold text-[14px] hover:bg-black active:scale-[0.98] transition disabled:opacity-60"},contactLoading?t.verification:t.contactSubmit))))); }
 
-  if(turnstileToken){
-    submitRegistration(payload);
-    return;
-  }
+  return e("div",{className:"min-h-screen bg-[#f7f9f8]"},Header(),e("main",null,Hero(),e("div",{className:"pb-4"}),PreregForm()),Footer(),modal==="terms"&&LegalModal(t.termsTitle,TERMS[lang],function(){setModal(null);}),modal==="privacy"&&LegalModal(t.privacyTitle,PRIVACY[lang],function(){setModal(null);}),modal==="it4y"&&LegalModal(t.it4yTitle,IT4Y[lang],function(){setModal(null);}),modal==="contact"&&ContactModal());
+}
 
-  pendingSubmission=payload;
-
-  try{
-    window.turnstile.execute(turnstileWidgetId);
-  }catch(err){
-    console.error(err);
-    pendingSubmission=null;
-    restoreSignupButton();
-    showMessage("error","errorTitle","verificationError");
-  }
-});
-
-document.getElementById("contactAnother").addEventListener("click",()=>{
-  const formArea=document.getElementById("contactFormArea");
-  const actions=document.querySelector("#contactModal .contact-actions");
-  const intro=document.querySelector("#contactModal .contact-intro");
-  const successPanel=document.getElementById("contactSuccessPanel");
-
-  if(successPanel) successPanel.hidden=true;
-  if(formArea) formArea.hidden=false;
-  if(actions) actions.hidden=false;
-  if(intro) intro.hidden=false;
-
-  clearContactStatus();
-  resetContactTurnstile();
-
-  const subject=document.getElementById("contactSubject");
-  if(subject) setTimeout(()=>subject.focus(),50);
-});
-
-document.getElementById("contactSend").addEventListener("click",()=>{
-  clearContactStatus();
-
-  const name=document.getElementById("contactName").value.trim();
-  const email=document.getElementById("contactEmail").value.trim();
-  const subject=document.getElementById("contactSubject").value.trim();
-  const message=document.getElementById("contactMessage").value.trim();
-  const privacyAcknowledged=document.getElementById("contactPrivacyAcknowledged").checked;
-  const website=document.getElementById("contactWebsite").value;
-  const btn=document.getElementById("contactSend");
-
-  if(name.length>120 || !validEmail(email) || subject.length<2 || subject.length>200 || message.length<5 || message.length>5000){
-    showContactStatus("error","contactInvalid");
-    return;
-  }
-
-  if(!privacyAcknowledged){
-    showContactStatus("error","contactPrivacyRequired");
-    return;
-  }
-
-  contactOriginalButtonText=btn.textContent;
-  btn.disabled=true;
-  btn.textContent=t("verification");
-
-  const payload={
-    name,
-    email,
-    subject,
-    message,
-    language:lang,
-    privacyAcknowledged,
-    website
-  };
-
-  if(!window.turnstile || contactTurnstileWidgetId===null){
-    restoreContactButton();
-    showContactStatus("error","verificationError");
-    return;
-  }
-
-  if(contactTurnstileToken){
-    submitContactMessage(payload);
-    return;
-  }
-
-  contactPendingSubmission=payload;
-  try{
-    window.turnstile.execute(contactTurnstileWidgetId);
-  }catch(err){
-    console.error(err);
-    contactPendingSubmission=null;
-    restoreContactButton();
-    showContactStatus("error","verificationError");
-  }
-});
-
-applyLang("ro");
+var root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(e(React.StrictMode, null, e(App, null)));
+})();
 </script>
 </body>
 </html>
