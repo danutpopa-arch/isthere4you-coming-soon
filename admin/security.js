@@ -19,6 +19,17 @@ function removeProjectAuthStorage(storage) {
   }
 }
 
+function installLogoutStyle() {
+  const style = document.createElement("style");
+  style.textContent = `
+    #logoutBtn.logoutSecure{display:block;width:100%;margin-top:8px;padding:10px 12px!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:10px!important;background:#2a1619!important;color:#ffb8bf!important;font-weight:700!important;text-align:center!important;cursor:pointer!important}
+    #logoutBtn.logoutSecure:hover{background:#3a1a1f!important;color:#fff!important;border-color:#a84a55!important}
+    #logoutBtn.logoutSecure:disabled{opacity:.6!important;cursor:wait!important}
+    @media(max-width:900px){#logoutBtn.logoutSecure{width:auto;white-space:nowrap;margin-top:0}}
+  `;
+  document.head.appendChild(style);
+}
+
 async function secureGlobalLogout() {
   const button = document.getElementById("logoutBtn");
   if (!button) return;
@@ -45,6 +56,7 @@ async function secureGlobalLogout() {
 }
 
 window.addEventListener("load", async () => {
+  installLogoutStyle();
   const button = document.getElementById("logoutBtn");
   if (button) {
     button.classList.add("logoutSecure");
