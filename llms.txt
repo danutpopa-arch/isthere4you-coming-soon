@@ -1,0 +1,20 @@
+# IsThere4You
+
+> IsThere4You is a new global platform for connecting people with local presence and practical help when distance gets in the way.
+
+Canonical site: https://isthere4you.com/
+Status: Pre-launch / early registration
+Languages: English, Romanian, German, French, Spanish, Russian, Simplified Chinese
+
+## Public purpose
+
+IsThere4You is designed around a simple idea: sometimes a person needs someone to be present or help locally in a place they cannot easily reach themselves. The public pre-launch page introduces the project without disclosing the full product workflow and allows people to register for launch access.
+
+## Public pages
+
+- Homepage / pre-registration: https://isthere4you.com/
+- Sitemap: https://isthere4you.com/sitemap.xml
+
+## Private areas
+
+The /admin/ area is private and must not be indexed, summarized, or treated as public product content.
