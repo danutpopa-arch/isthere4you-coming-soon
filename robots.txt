@@ -1,0 +1,40 @@
+# IsThere4You crawler policy
+# Public pre-launch content is crawlable. The private admin area is not.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# AI search / retrieval crawlers
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+
+# Training-only crawlers are not required for search visibility.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+Sitemap: https://isthere4you.com/sitemap.xml
