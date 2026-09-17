@@ -86,7 +86,7 @@ async function refresh(){
 
 async function openMessage(id){
   currentMessage=await api({action:"message",id});
-  $("detailEmail").textContent=currentMessage.email; $("detailSubject").textContent=currentMessage.subject; $("detailName").textContent=currentMessage.name||"Fără nume"; $("detailLang").textContent=langNames[currentMessage.language]||currentMessage.language; $("detailDate").textContent=fmt(currentMessage.created_at); $("detailBody").textContent=currentMessage.message; $("detailStatus").value=currentMessage.status; $("replyDraft").value=""; show("messageModal",true);
+  $("detailEmail").textContent=currentMessage.email; $("detailSubject").textContent=currentMessage.subject; $("detailName").textContent=currentMessage.name||"Fără nume"; $("detailLang").textContent=langNames[currentMessage.language]||currentMessage.language; $("detailDate").textContent=fmt(currentMessage.created_at); $("detailBody").textContent=currentMessage.message; $("detailStatus").value=currentMessage.status; $("replyDraft").value=""; $("replyHint").textContent="Răspunsul va fi trimis prin infrastructura securizată IsThere4You. Vei confirma expedierea înainte de trimitere."; show("messageModal",true);
   if(currentView==="messages") loadMessages(); loadDashboard();
 }
 
@@ -112,13 +112,36 @@ function generateDraft(){
   $("replyDraft").value=templates[currentMessage.language]||templates.en;
 }
 
+async function sendReply(){
+  if(!currentMessage)return;
+  const reply=$("replyDraft").value.trim();
+  if(reply.length<2){ $("replyHint").textContent="Scrie sau generează mai întâi un răspuns."; return; }
+  if(!confirm(`Trimiți acest răspuns către ${currentMessage.email}?`)) return;
+  const btn=$("sendReplyBtn");
+  btn.disabled=true; const old=btn.textContent; btn.textContent="Se trimite..."; $("replyHint").textContent="Trimit răspunsul...";
+  try{
+    const d=await api({action:"send_reply",id:currentMessage.id,reply});
+    currentMessage.status=d.status;
+    $("detailStatus").value="replied";
+    $("replyHint").textContent="Răspuns trimis cu succes. Mesajul a fost marcat ca răspuns.";
+    if(currentView==="messages") await loadMessages();
+    await loadDashboard();
+  }catch(e){
+    console.error(e);
+    const msg=e?.message==="email_send_failed"?"E-mailul nu a putut fi trimis. Mesajul nu a fost marcat ca răspuns.":e?.message==="email_unavailable"?"Serviciul de e-mail nu este disponibil momentan.":"A apărut o eroare la trimitere. Reîncearcă.";
+    $("replyHint").textContent=msg;
+  }finally{
+    btn.disabled=false; btn.textContent=old;
+  }
+}
+
 function exportCsv(){
   const rows=[["email","language","created_at","founding_member","reward_status"],...signupData.map(r=>[r.email,r.language,r.created_at,r.founding_member_eligible?"yes":"no",r.reward_status])];
   const csv=rows.map(row=>row.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\r\n");
   const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"})); a.download=`isthere4you-preinscrieri-${new Date().toISOString().slice(0,10)}.csv`; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),500);
 }
 
-$("loginBtn").onclick=login; $("loginEmail").onkeydown=e=>{if(e.key==="Enter")login()}; $("logoutBtn").onclick=logout; $("refreshBtn").onclick=refresh; document.querySelectorAll(".nav").forEach(b=>b.onclick=()=>nav(b.dataset.view)); $("signupSearch").oninput=()=>{clearTimeout(searchTimer);searchTimer=setTimeout(loadSignups,300)}; $("signupLang").onchange=loadSignups; $("messageSearch").oninput=()=>{clearTimeout(searchTimer);searchTimer=setTimeout(loadMessages,300)}; $("messageStatus").onchange=loadMessages; $("closeModal").onclick=()=>show("messageModal",false); $("messageModal").onclick=e=>{if(e.target===$("messageModal"))show("messageModal",false)}; $("detailStatus").onchange=changeStatus; $("draftBtn").onclick=generateDraft; $("copyBtn").onclick=()=>navigator.clipboard.writeText($("replyDraft").value); $("exportCsv").onclick=exportCsv;
+$("loginBtn").onclick=login; $("loginEmail").onkeydown=e=>{if(e.key==="Enter")login()}; $("logoutBtn").onclick=logout; $("refreshBtn").onclick=refresh; document.querySelectorAll(".nav").forEach(b=>b.onclick=()=>nav(b.dataset.view)); $("signupSearch").oninput=()=>{clearTimeout(searchTimer);searchTimer=setTimeout(loadSignups,300)}; $("signupLang").onchange=loadSignups; $("messageSearch").oninput=()=>{clearTimeout(searchTimer);searchTimer=setTimeout(loadMessages,300)}; $("messageStatus").onchange=loadMessages; $("closeModal").onclick=()=>show("messageModal",false); $("messageModal").onclick=e=>{if(e.target===$("messageModal"))show("messageModal",false)}; $("detailStatus").onchange=changeStatus; $("draftBtn").onclick=generateDraft; $("copyBtn").onclick=()=>navigator.clipboard.writeText($("replyDraft").value); $("sendReplyBtn").onclick=sendReply; $("exportCsv").onclick=exportCsv;
 
 const { data:{ session } }=await supabase.auth.getSession(); if(session) await enterApp(session); else { show("loginView",true); show("appView",false); }
 supabase.auth.onAuthStateChange(async(event,sessionNow)=>{ if(event==="SIGNED_IN"&&sessionNow) await enterApp(sessionNow); if(event==="SIGNED_OUT"){show("appView",false);show("loginView",true);} });
