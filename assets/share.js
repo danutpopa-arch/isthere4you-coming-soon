@@ -4,8 +4,8 @@ const BASE_URL="https://isthere4you.com/";
 const REF_API="https://yulnanfbthhbokdskpnp.supabase.co/functions/v1/prelaunch-referral";
 const STORAGE_KEY="it4y-referral-code";
 const COPY={
-  ro:{button:"Distribuie IsThere4You",copied:"Link copiat ✓",text:"Am găsit o idee interesantă: IsThere4You — ajutor local atunci când tu nu poți fi acolo.",examples:["De exemplu: ai plecat din oraș și ți-ai dat seama că ai uitat pașaportul, cheile sau un obiect important la hotel? IsThere4You te-ar putea conecta cu cineva aflat acolo, care să te ajute.","De exemplu: ai găsit online un apartament, o mașină sau un obiect la sute de kilometri distanță? IsThere4You te-ar putea conecta cu cineva aflat aproape, care să vadă locul sau obiectul înainte să faci drumul.","De exemplu: vrei să afli dacă un magazin este deschis, dacă este aglomerat sau dacă un produs mai este pe stoc într-un alt oraș? IsThere4You te-ar putea conecta cu cineva aflat acolo."],refTitle:"Invită pe cineva",refBody:"Acesta este linkul tău personal. Vezi câte persoane îl deschid și câte se înscriu prin el.",copy:"Copiază",copiedLink:"Copiat ✓",clicks:"deschideri",signups:"înscrieri",shareInvite:"Distribuie invitația"},
-  en:{button:"Share IsThere4You",copied:"Link copied ✓",text:"I found an interesting idea: IsThere4You — local help when you cannot be there yourself.",examples:["For example: left town and realized you forgot your passport, keys, or another important item at the hotel? IsThere4You could connect you with someone who is there and may be able to help.","For example: found an apartment, a car, or an item online hundreds of kilometres away? IsThere4You could connect you with someone nearby who may be able to see the place or item before you make the trip.","For example: want to know whether a shop is open, how busy it is, or whether a product is still in stock in another city? IsThere4You could connect you with someone who is there."],refTitle:"Invite someone",refBody:"This is your personal invite link. See how many people open it and how many sign up through it.",copy:"Copy",copiedLink:"Copied ✓",clicks:"link opens",signups:"signups",shareInvite:"Share your invite"},
+  ro:{button:"Distribuie IsThere4You",copied:"Link copiat ✓",text:"Am găsit o idee interesantă: IsThere4You — ajutor local atunci când tu nu poți fi acolo.",examples:["De exemplu: ai plecat din oraș și ți-ai dat seama că ai uitat pașaportul, cheile sau un obiect important la hotel? IsThere4You te-ar putea conecta cu cineva aflat acolo, care să te ajute.","De exemplu: ai găsit online un apartament, o mașină sau un obiect la sute de kilometri distanță? IsThere4You te-ar putea conecta cu cineva aflat aproape, care să vadă locul sau obiectul înainte să faci drumul.","De exemplu: vrei să afli dacă un magazin este deschis, dacă este aglomerat sau dacă un produs mai este pe stoc într-un alt oraș? IsThere4You te-ar putea conecta cu cineva aflat acolo."],refTitle:"Invită pe cineva",refBody:"Distribuie invitația direct pe platforma preferată.",copy:"Copiază",copiedLink:"Copiat ✓",clicks:"deschideri",signups:"înscrieri",shareInvite:"Distribuie invitația"},
+  en:{button:"Share IsThere4You",copied:"Link copied ✓",text:"I found an interesting idea: IsThere4You — local help when you cannot be there yourself.",examples:["For example: left town and realized you forgot your passport, keys, or another important item at the hotel? IsThere4You could connect you with someone who is there and may be able to help.","For example: found an apartment, a car, or an item online hundreds of kilometres away? IsThere4You could connect you with someone nearby who may be able to see the place or item before you make the trip.","For example: want to know whether a shop is open, how busy it is, or whether a product is still in stock in another city? IsThere4You could connect you with someone who is there."],refTitle:"Invite someone",refBody:"Share your invitation directly on your preferred platform.",copy:"Copy",copiedLink:"Copied ✓",clicks:"link opens",signups:"signups",shareInvite:"Share your invite"},
   de:{button:"IsThere4You teilen",copied:"Link kopiert ✓",text:"Ich habe eine interessante Idee entdeckt: IsThere4You — lokale Hilfe, wenn du selbst nicht vor Ort sein kannst.",examples:["Zum Beispiel: Du bist bereits abgereist und merkst, dass du deinen Reisepass, deine Schlüssel oder einen wichtigen Gegenstand im Hotel vergessen hast? IsThere4You könnte dich mit jemandem vor Ort verbinden, der dir vielleicht helfen kann.","Zum Beispiel: Du hast online eine Wohnung, ein Auto oder einen Gegenstand gefunden, der Hunderte Kilometer entfernt ist? IsThere4You könnte dich mit jemandem in der Nähe verbinden, der sich den Ort oder Gegenstand möglicherweise ansehen kann, bevor du die Fahrt machst.","Zum Beispiel: Du möchtest wissen, ob ein Geschäft geöffnet ist, wie voll es ist oder ob ein Produkt in einer anderen Stadt noch verfügbar ist? IsThere4You könnte dich mit jemandem verbinden, der bereits dort ist."],refTitle:"Jemanden einladen",refBody:"Das ist dein persönlicher Einladungslink. Du siehst, wie oft er geöffnet wird und wie viele Anmeldungen darüber erfolgen.",copy:"Kopieren",copiedLink:"Kopiert ✓",clicks:"Link-Aufrufe",signups:"Anmeldungen",shareInvite:"Einladung teilen"},
   fr:{button:"Partager IsThere4You",copied:"Lien copié ✓",text:"J’ai découvert une idée intéressante : IsThere4You — une aide locale lorsque vous ne pouvez pas être sur place.",examples:["Par exemple : vous avez quitté la ville puis réalisé que vous aviez oublié votre passeport, vos clés ou un objet important à l’hôtel ? IsThere4You pourrait vous mettre en relation avec quelqu’un qui se trouve sur place et pourrait peut-être vous aider.","Par exemple : vous avez trouvé en ligne un appartement, une voiture ou un objet situé à des centaines de kilomètres ? IsThere4You pourrait vous mettre en relation avec quelqu’un à proximité qui pourrait voir le lieu ou l’objet avant votre déplacement.","Par exemple : vous voulez savoir si un magasin est ouvert, s’il y a du monde ou si un produit est encore en stock dans une autre ville ? IsThere4You pourrait vous mettre en relation avec quelqu’un qui se trouve sur place."],refTitle:"Inviter quelqu’un",refBody:"Voici votre lien d’invitation personnel. Voyez combien de personnes l’ouvrent et combien s’inscrivent grâce à lui.",copy:"Copier",copiedLink:"Copié ✓",clicks:"ouvertures",signups:"inscriptions",shareInvite:"Partager l’invitation"},
   es:{button:"Compartir IsThere4You",copied:"Enlace copiado ✓",text:"He encontrado una idea interesante: IsThere4You — ayuda local cuando tú no puedes estar allí.",examples:["Por ejemplo: ¿ya te has ido de la ciudad y te das cuenta de que olvidaste el pasaporte, las llaves o un objeto importante en el hotel? IsThere4You podría conectarte con alguien que esté allí y quizá pueda ayudarte.","Por ejemplo: ¿has encontrado en internet un piso, un coche o un objeto a cientos de kilómetros? IsThere4You podría conectarte con alguien cercano que quizá pueda ver el lugar o el objeto antes de que hagas el viaje.","Por ejemplo: ¿quieres saber si una tienda está abierta, si hay mucha gente o si un producto sigue disponible en otra ciudad? IsThere4You podría conectarte con alguien que esté allí."],refTitle:"Invita a alguien",refBody:"Este es tu enlace personal de invitación. Mira cuántas personas lo abren y cuántas se registran a través de él.",copy:"Copiar",copiedLink:"Copiado ✓",clicks:"aperturas",signups:"registros",shareInvite:"Compartir invitación"},
@@ -37,8 +37,8 @@ function renderReferralPanel(stats){
   if(!code){panel.classList.add("hidden");return}
   const c=copy();
   panel.classList.remove("hidden");
-  const title=document.getElementById("referralTitle"),body=document.getElementById("referralBody"),input=document.getElementById("referralLink"),copyBtn=document.getElementById("copyReferralLink"),clicksLabel=document.getElementById("referralClicksLabel"),signupsLabel=document.getElementById("referralSignupsLabel");
-  if(title)title.textContent=c.refTitle;if(body)body.textContent=c.refBody;if(input)input.value=personalUrl(code);if(copyBtn&&!copyBtn.dataset.busy)copyBtn.textContent=c.copy;if(clicksLabel)clicksLabel.textContent=c.clicks;if(signupsLabel)signupsLabel.textContent=c.signups;
+  const title=document.getElementById("referralTitle"),body=document.getElementById("referralBody"),clicksLabel=document.getElementById("referralClicksLabel"),signupsLabel=document.getElementById("referralSignupsLabel");
+  if(title)title.textContent=c.refTitle;if(body)body.textContent=c.refBody;if(clicksLabel)clicksLabel.textContent=c.clicks;if(signupsLabel)signupsLabel.textContent=c.signups;
   if(stats){const clicks=document.getElementById("referralClicks"),signups=document.getElementById("referralSignups");if(clicks)clicks.textContent=String(Number(stats.clicks??stats.referralClicks??0));if(signups)signups.textContent=String(Number(stats.signups??stats.referralSignups??0))}
 }
 
@@ -85,10 +85,18 @@ async function share(btn){
   if(label){btn.dataset.busy="1";label.textContent=c.copied;setTimeout(()=>{delete btn.dataset.busy;renderButtons()},1800)}
 }
 
-async function copyReferral(){
-  const code=ownCode(),btn=document.getElementById("copyReferralLink");if(!code||!btn)return;
-  const c=copy();
-  try{await fallbackCopy(personalUrl(code));btn.dataset.busy="1";btn.textContent=c.copiedLink;setTimeout(()=>{delete btn.dataset.busy;renderReferralPanel()},1600)}catch{}
+function shareTo(target){
+  const {url,text,fallback}=buildSharePayload();
+  const full=encodeURIComponent(fallback), encodedUrl=encodeURIComponent(url), encodedText=encodeURIComponent(text);
+  const links={
+    whatsapp:`https://wa.me/?text=${full}`,
+    facebook:`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    x:`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`,
+    telegram:`https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`,
+    email:`mailto:?subject=${encodeURIComponent("IsThere4You")}&body=${full}`
+  };
+  if(target==="copy"){fallbackCopy(url);return}
+  const href=links[target];if(href)window.open(href,"_blank","noopener,noreferrer");
 }
 
 function render(){
@@ -100,7 +108,7 @@ function render(){
 
 function init(){
   document.querySelectorAll("[data-share-isthere4you]").forEach(btn=>btn.addEventListener("click",()=>share(btn)));
-  document.getElementById("copyReferralLink")?.addEventListener("click",copyReferral);
+  document.querySelectorAll("[data-share-target]").forEach(btn=>btn.addEventListener("click",()=>shareTo(btn.dataset.shareTarget)));
   document.getElementById("lang")?.addEventListener("change",()=>setTimeout(render,0));
   window.addEventListener("it4y:signup-success",e=>{
     const d=e.detail||{};
