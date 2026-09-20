@@ -148,7 +148,7 @@ async function loadDashboard() {
   if (a?.available) {
     $("cfVisits24").textContent = a.last24h?.visits ?? 0;
     $("cfViews24").textContent = a.last24h?.pageViews ?? 0;
-    $("cfScope24").textContent = `Pagina publică / · total domeniu: ${a.all24h?.visits ?? 0}`;
+    $("cfScope24").textContent = `Total domeniu Cloudflare: ${a.all24h?.visits ?? 0}`;
     $("cfConv24").textContent = a.last24h?.conversionRate === null || a.last24h?.conversionRate === undefined ? "—" : `${a.last24h.conversionRate}%`;
     $("cfVisits7").textContent = a.last7d?.visits ?? 0;
     $("cfAnalyticsState").textContent = "Cloudflare RUM · boți excluși";
