@@ -144,6 +144,20 @@ function nav(view) {
 async function loadDashboard() {
   const d = await api({ action:"dashboard" });
   $("sTotal").textContent = d.signups.total; $("s24").textContent = d.signups.last24h; $("s7").textContent = d.signups.last7d; $("mNew").textContent = d.messages.byStatus.new || 0;
+  const a = d.analytics;
+  if (a?.available) {
+    $("cfVisits24").textContent = a.last24h?.visits ?? 0;
+    $("cfViews24").textContent = a.last24h?.pageViews ?? 0;
+    $("cfConv24").textContent = a.last24h?.conversionRate === null || a.last24h?.conversionRate === undefined ? "—" : `${a.last24h.conversionRate}%`;
+    $("cfVisits7").textContent = a.last7d?.visits ?? 0;
+    $("cfAnalyticsState").textContent = "Cloudflare RUM · boți excluși";
+  } else {
+    $("cfVisits24").textContent = "—";
+    $("cfViews24").textContent = "—";
+    $("cfConv24").textContent = "—";
+    $("cfVisits7").textContent = "—";
+    $("cfAnalyticsState").textContent = "Cloudflare Analytics indisponibil";
+  }
   $("betaOptIn").textContent = d.signups.betaOptIn ?? 0; $("betaRate").textContent = `${d.signups.betaRate ?? 0}% din înscriși`;
   $("foundingTotal").textContent = d.signups.founding ?? 0; $("verifiedTotal").textContent = d.signups.verified ?? 0; $("verificationRate").textContent = `${d.signups.verificationRate ?? 0}% din înscriși`;
   const g = d.signups.growth7d; $("growth7d").textContent = g === null || g === undefined ? "—" : `${g > 0 ? "+" : ""}${g}%`;
