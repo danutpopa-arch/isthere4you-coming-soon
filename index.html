@@ -65,7 +65,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=20260921-utility-first">
+  <link rel="stylesheet" href="assets/style.css?v=20260921-utility-first-v2">
 </head>
 <body>
 <header><a class="brand" href="/"><b>Is</b><strong>IsThere4You</strong></a><label class="lang"><span>◎</span><select id="lang" aria-label="Language"></select></label></header>
@@ -98,6 +98,17 @@
       <p id="useCard4Text">Need someone to photograph a place, a sign, a product, or a situation in another city? IsThere4You can connect you with someone who is there.</p>
     </article>
   </div>
+</section>
+
+<section class="card signup-after-usecases" id="signupCard"><div id="signupForm"><div class="signup-intro"><h2 id="signupTitle">Be among the first.</h2><p id="signupIntro">Join before launch and reserve your place in the IsThere4You pre-launch.</p></div><label class="fieldLabel" id="emailLabel"></label><input id="email" type="email" maxlength="254" autocomplete="email"><input id="website" class="hp" tabindex="-1" autocomplete="off"><div class="info">⌖ <span id="infoLine"></span></div><label class="consent"><input id="consent" type="checkbox"><span id="consentText"></span></label><label class="consent" id="betaConsentWrap"><input id="betaConsent" type="checkbox"><span id="betaConsentText"></span></label><div id="signupTurnstile" class="captcha"></div><p id="signupErr" class="err"></p><button id="signupBtn" class="primary"></button><button id="it4yBtn" class="secondary"></button><p id="disclaimer" class="small"></p></div><div id="signupSuccess" class="success hidden"><div class="check">✓</div><h2 id="successTitle"></h2><p><span id="successBody"></span><strong id="successEmail"></strong><span id="successBody2"></span></p><div class="founding">✦ <span id="founding"></span></div><p id="reservedNote"></p><button id="it4yBtn2" class="secondary"></button></div></section>
+
+
+<div class="share-primary-wrap">
+  <button class="share-button" type="button" data-share-isthere4you aria-label="Share IsThere4You"><span class="share-icon" aria-hidden="true">↗</span><span class="share-label">Share IsThere4You</span></button>
+</div>
+
+
+<section class="usecases-more" aria-label="More IsThere4You examples">
   <details class="more-wrap">
     <summary id="useMoreBtn">See more examples</summary>
     <div class="more-list">
@@ -108,17 +119,10 @@
   </details>
   <p class="closing" id="useClosing">Is something important to you hundreds or thousands of kilometres away? IsThere4You aims to turn distance into a connection with someone who is already there.</p>
   <p class="usecases-note" id="useNote">These examples illustrate only some of the situations in which IsThere4You may be useful; the possibilities are not limited to the cases shown here.</p>
+
 </section>
-
-<section class="card signup-after-usecases" id="signupCard"><div id="signupForm"><div class="signup-intro"><h2 id="signupTitle">Be among the first.</h2><p id="signupIntro">Join before launch and reserve your place in the IsThere4You pre-launch.</p></div><label class="fieldLabel" id="emailLabel"></label><input id="email" type="email" maxlength="254" autocomplete="email"><input id="website" class="hp" tabindex="-1" autocomplete="off"><div class="info">⌖ <span id="infoLine"></span></div><label class="consent"><input id="consent" type="checkbox"><span id="consentText"></span></label><label class="consent" id="betaConsentWrap"><input id="betaConsent" type="checkbox"><span id="betaConsentText"></span></label><div id="signupTurnstile" class="captcha"></div><p id="signupErr" class="err"></p><button id="signupBtn" class="primary"></button><button id="it4yBtn" class="secondary"></button><p id="disclaimer" class="small"></p></div><div id="signupSuccess" class="success hidden"><div class="check">✓</div><h2 id="successTitle"></h2><p><span id="successBody"></span><strong id="successEmail"></strong><span id="successBody2"></span></p><div class="founding">✦ <span id="founding"></span></div><p id="reservedNote"></p><button id="it4yBtn2" class="secondary"></button></div></section>
-
-
-<div class="share-primary-wrap">
-  <button class="share-button" type="button" data-share-isthere4you aria-label="Share IsThere4You"><span class="share-icon" aria-hidden="true">↗</span><span class="share-label">Share IsThere4You</span></button>
-</div>
-
 </main>
 <footer><button data-modal="terms" id="footerTerms"></button><button data-modal="privacy" id="footerPrivacy"></button><button data-modal="contact" id="footerContact"></button><p id="copyright"></p></footer>
 <div id="legalModal" class="overlay hidden"><div class="modal"><div class="modalHead"><h3 id="legalTitle"></h3><button class="x" data-close>×</button></div><div id="legalBody" class="modalBody"></div><div class="modalFoot"><button class="secondary" data-close id="closeLegal"></button></div></div></div>
 <div id="contactModal" class="overlay hidden"><div class="modal contact"><div class="modalHead"><h3 id="contactTitle"></h3><button class="x" data-close-contact>×</button></div><div id="contactForm"><p id="contactBody" class="muted"></p><label id="nameLabel"></label><input id="contactName" maxlength="120"><label id="contactEmailLabel"></label><input id="contactEmail" type="email" maxlength="254"><label id="subjectLabel"></label><input id="contactSubject" maxlength="200"><label id="messageLabel"></label><textarea id="contactMessage" maxlength="500"></textarea><div id="contactCount" style="text-align:right;font-size:11px;color:rgba(17,17,17,.45);margin-top:5px">0 / 500</div><input id="contactWebsite" class="hp" tabindex="-1" autocomplete="off"><label class="consent"><input id="contactConsent" type="checkbox"><span id="contactConsentText"></span></label><div id="contactTurnstile" class="captcha"></div><p id="contactErr" class="err"></p><button id="contactSubmit" class="primary"></button></div><div id="contactSuccess" class="success hidden"><div class="check">✓</div><h2 id="contactSuccessTitle"></h2><p id="contactSuccessBody"></p><button id="contactAgain" class="primary"></button></div></div></div>
-<script src="assets/language-detect.js"></script><script src="assets/contact-limit.js" defer></script><script src="assets/beta-consent.js?v=20260917-1542" defer></script><script src="assets/share.js?v=20260917-share-v2" defer></script><script src="assets/app.js?v=20260921-utility-first" defer></script><div id="buildVersion" aria-label="Build version" style="position:fixed;right:10px;bottom:8px;z-index:9999;padding:4px 8px;border:1px solid rgba(17,17,17,.10);border-radius:999px;background:rgba(255,255,255,.80);backdrop-filter:blur(8px);color:rgba(17,17,17,.48);font:700 10px/1.2 Inter,Arial,sans-serif;letter-spacing:.02em;pointer-events:none;user-select:none">IT4Y PRELAUNCH v2026.09.21.1</div></body></html>
+<script src="assets/language-detect.js"></script><script src="assets/contact-limit.js" defer></script><script src="assets/beta-consent.js?v=20260917-1542" defer></script><script src="assets/share.js?v=20260917-share-v2" defer></script><script src="assets/app.js?v=20260921-utility-first" defer></script><div id="buildVersion" aria-label="Build version" style="position:fixed;right:10px;bottom:8px;z-index:9999;padding:4px 8px;border:1px solid rgba(17,17,17,.10);border-radius:999px;background:rgba(255,255,255,.80);backdrop-filter:blur(8px);color:rgba(17,17,17,.48);font:700 10px/1.2 Inter,Arial,sans-serif;letter-spacing:.02em;pointer-events:none;user-select:none">IT4Y PRELAUNCH v2026.09.21.2</div></body></html>
