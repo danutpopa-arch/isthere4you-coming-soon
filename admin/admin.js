@@ -148,6 +148,7 @@ async function loadDashboard() {
   if (a?.available) {
     $("cfVisits24").textContent = a.last24h?.visits ?? 0;
     $("cfViews24").textContent = a.last24h?.pageViews ?? 0;
+    $("cfScope24").textContent = `Pagina publică / · total domeniu: ${a.all24h?.visits ?? 0}`;
     $("cfConv24").textContent = a.last24h?.conversionRate === null || a.last24h?.conversionRate === undefined ? "—" : `${a.last24h.conversionRate}%`;
     $("cfVisits7").textContent = a.last7d?.visits ?? 0;
     $("cfAnalyticsState").textContent = "Cloudflare RUM · boți excluși";
@@ -156,6 +157,7 @@ async function loadDashboard() {
     $("cfViews24").textContent = "—";
     $("cfConv24").textContent = "—";
     $("cfVisits7").textContent = "—";
+    $("cfScope24").textContent = "Cloudflare Analytics indisponibil";
     $("cfAnalyticsState").textContent = "Cloudflare Analytics indisponibil";
   }
   $("betaOptIn").textContent = d.signups.betaOptIn ?? 0; $("betaRate").textContent = `${d.signups.betaRate ?? 0}% din înscriși`;
@@ -194,10 +196,26 @@ async function loadMessages() {
 }
 
 async function refresh() {
-  $("refreshBtn").disabled = true;
-  try { if (currentView === "dashboard") await loadDashboard(); else if (currentView === "signups") await loadSignups(); else await loadMessages(); }
-  catch (e) { console.error(e); alert(`Eroare D1 — nu am putut încărca datele. Cod: ${e?.code || e?.message || "necunoscut"}`); }
-  finally { $("refreshBtn").disabled = false; }
+  const btn = $("refreshBtn");
+  const old = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "Se actualizează…";
+  $("refreshState").textContent = "Se citesc datele…";
+  try {
+    if (currentView === "dashboard") await loadDashboard();
+    else if (currentView === "signups") await loadSignups();
+    else await loadMessages();
+    $("refreshState").textContent = `Actualizat la ${new Intl.DateTimeFormat("ro-RO",{timeZone:"Europe/Bucharest",hour:"2-digit",minute:"2-digit",second:"2-digit"}).format(new Date())}`;
+  }
+  catch (e) {
+    console.error(e);
+    $("refreshState").textContent = "Actualizarea a eșuat";
+    alert(`Eroare D1 — nu am putut încărca datele. Cod: ${e?.code || e?.message || "necunoscut"}`);
+  }
+  finally {
+    btn.disabled = false;
+    btn.textContent = old;
+  }
 }
 
 async function openMessage(id) {
