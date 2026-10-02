@@ -152,5 +152,28 @@
     "more3": "出发前想核实一个地址、地点或现场情况？IsThere4You 可以帮你联系一位已经在该区域的人。",
     "closing": "对你重要的事情远在几百甚至几千公里之外？IsThere4You 希望把距离转化为与你所需地点附近之人的连接。",
     "note": "这些示例只展示了 IsThere4You 可能有用的部分情形；它的使用方式并不限于以上场景。"
+  },
+  "tr": {
+    "title": "IsThere4You pratikte ne anlama gelebilir?",
+    "intro": "Bazen tek ihtiyacınız, sizin bulunamadığınız yerde zaten bulunan bir kişidir.",
+    "card1Label": "UNUTULAN EŞYA",
+    "card1Title": "Önemli bir şey mi unuttunuz?",
+    "card1Text": "Şehirden ayrıldıktan sonra pasaportunuzu, anahtarlarınızı veya önemli bir eşyanızı otelde unuttuğunuzu mu fark ettiniz? IsThere4You, sizi orada bulunan ve yardımcı olabilecek biriyle buluşturabilir.",
+    "card2Label": "YOLA ÇIKMADAN ÖNCE KONTROL",
+    "card2Title": "Gitmeden önce görmek ister misiniz?",
+    "card2Text": "İnternette yüzlerce kilometre uzakta bir daire, araba veya eşya mı buldunuz? IsThere4You, siz yola çıkmadan önce yeri veya eşyayı görebilecek yakındaki biriyle sizi buluşturabilir.",
+    "card3Label": "YEREL BİLGİ",
+    "card3Title": "Orada neler olduğunu bilmeniz mi gerekiyor?",
+    "card3Text": "Belirli bir yerde şu anda neler olduğunu — bir mağazanın açık olup olmadığını, ne kadar kalabalık olduğunu veya bir ürünün stokta bulunup bulunmadığını — öğrenmeniz mi gerekiyor? IsThere4You, sizi orada bulunan biriyle buluşturabilir.",
+    "card4Label": "GÖRSEL KONTROL",
+    "card4Title": "Birinin sizin için görmesi mi gerekiyor?",
+    "card4Text": "Başka bir şehirdeki bir yeri, tabelayı, ürünü veya durumu birinin fotoğraflamasına mı ihtiyacınız var? IsThere4You, sizi orada bulunan biriyle buluşturabilir.",
+    "more": "Daha fazla örnek gör",
+    "more1": "Başka bir şehirden bir şey satın almak istiyor ancak ürünün gerçekten var olup olmadığını veya ilandaki gibi görünüp görünmediğini bilmiyor musunuz? IsThere4You, sizin için kontrol edebilecek bölgedeki biriyle sizi buluşturabilir.",
+    "more2": "Bir bagaj, paket veya kişisel eşyanız kolayca dönemeyeceğiniz bir yerde mi kaldı? IsThere4You, yakındaki birini bulmanıza yardımcı olabilir.",
+    "more3": "Yola çıkmadan önce bir adresi, konumu veya durumu kontrol etmek mi istiyorsunuz? IsThere4You, sizi zaten o bölgede bulunan biriyle buluşturabilir.",
+    "closing": "Sizin için önemli bir şey yüzlerce veya binlerce kilometre uzakta mı? IsThere4You, mesafeyi zaten orada bulunan biriyle bağlantıya dönüştürmeyi amaçlar.",
+    "note": "Bu örnekler, IsThere4You’nun yararlı olabileceği durumlardan yalnızca bazılarını gösterir; olanaklar burada sunulan örneklerle sınırlı değildir."
   }
 }
+
