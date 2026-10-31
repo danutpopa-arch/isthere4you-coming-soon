@@ -6,43 +6,88 @@
       "code": "ro",
       "label": "Română",
       "short": "RO",
-      "aliases": ["ro", "ro-RO"]
+      "aliases": [
+        "ro",
+        "ro-RO"
+      ]
     },
     {
       "code": "en",
       "label": "English",
       "short": "EN",
-      "aliases": ["en", "en-US", "en-GB", "en-AU", "en-CA"]
+      "aliases": [
+        "en",
+        "en-US",
+        "en-GB",
+        "en-AU",
+        "en-CA"
+      ]
     },
     {
       "code": "de",
       "label": "Deutsch",
       "short": "DE",
-      "aliases": ["de", "de-DE", "de-AT", "de-CH"]
+      "aliases": [
+        "de",
+        "de-DE",
+        "de-AT",
+        "de-CH"
+      ]
     },
     {
       "code": "fr",
       "label": "Français",
       "short": "FR",
-      "aliases": ["fr", "fr-FR", "fr-BE", "fr-CA", "fr-CH"]
+      "aliases": [
+        "fr",
+        "fr-FR",
+        "fr-BE",
+        "fr-CA",
+        "fr-CH"
+      ]
     },
     {
       "code": "es",
       "label": "Español",
       "short": "ES",
-      "aliases": ["es", "es-ES", "es-MX", "es-AR", "es-CO"]
+      "aliases": [
+        "es",
+        "es-ES",
+        "es-MX",
+        "es-AR",
+        "es-CO"
+      ]
     },
     {
       "code": "ru",
       "label": "Русский",
       "short": "RU",
-      "aliases": ["ru", "ru-RU"]
+      "aliases": [
+        "ru",
+        "ru-RU"
+      ]
     },
     {
       "code": "zh-CN",
       "label": "简体中文",
       "short": "中文",
-      "aliases": ["zh-CN", "zh-SG", "zh-Hans", "zh"]
+      "aliases": [
+        "zh-CN",
+        "zh-SG",
+        "zh-Hans",
+        "zh"
+      ]
+    },
+    {
+      "code": "tr",
+      "label": "Türkçe",
+      "short": "TR",
+      "aliases": [
+        "tr",
+        "tr-TR",
+        "tr-CY"
+      ]
     }
   ]
 }
+

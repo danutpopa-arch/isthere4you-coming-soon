@@ -3,7 +3,7 @@
 
   const ACTIVE_KEY = "isthere4you-language";
   const MANUAL_KEY = "isthere4you-language-manual-v1";
-  const SUPPORTED = new Set(["ro","en","de","fr","es","ru","zh-CN"]);
+  const SUPPORTED = new Set(["ro","en","de","fr","es","ru","tr","zh-CN"]);
 
   function normalizeLocale(value){
     const v = String(value || "").toLowerCase();
@@ -14,6 +14,7 @@
     if(v.startsWith("fr")) return "fr";
     if(v.startsWith("es")) return "es";
     if(v.startsWith("ru")) return "ru";
+    if(v.startsWith("tr")) return "tr";
     return "";
   }
 
@@ -28,6 +29,7 @@
       "Europe/Paris":"fr",
       "Europe/Madrid":"es",
       "Europe/Moscow":"ru",
+      "Europe/Istanbul":"tr",
       "Asia/Shanghai":"zh-CN"
     };
     if(exact[tz]) return exact[tz];

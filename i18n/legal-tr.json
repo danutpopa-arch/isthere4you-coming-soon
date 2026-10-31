@@ -1,0 +1,78 @@
+{
+  "notice": "Bilgilendirme amaçlı çeviridir. Herhangi bir uyuşmazlık halinde Romence sürüm esas alınır.",
+  "terms": [
+    {
+      "h": "1. Ön kayıt",
+      "p": "Ön kayıt, aktif bir hesap oluşturmaz veya platforma anında erişim sağlamaz. IsThere4You geliştirme aşamasındadır ve kesin bir lansman tarihi garanti edilmez."
+    },
+    {
+      "h": "2. Founding Member 2026",
+      "p": "“Founding Member 2026”, ön lansman döneminde kayıt olan belirli uygun kullanıcılara sunulan sembolik ve tanıtım amaçlı bir statüdür. Sizi kurucu, ortak, hissedar, yatırımcı veya alacaklı yapmaz; projenin kodu, markası, geliri veya varlıkları üzerinde hak vermez. Oy, yönetim veya kâr dağıtımı hakkı sağlamaz; kişiye özeldir ve devredilemez."
+    },
+    {
+      "h": "3. IT4Y Puanları",
+      "p": "IT4Y Puanları, dahili dijital ödül birimleridir. Mevcut özelliklere bağlı olarak Premium avantajlar veya platform içindeki diğer faydalar için ve bu özellik kullanıma açılırsa diğer kullanıcıları gönüllü olarak ödüllendirmek amacıyla kullanılabilir. IT4Y Puanları para, elektronik para, kripto para veya finansal araç değildir; nakit olarak çekilemez ve değer ya da dönüştürülebilirlik garantisi yoktur."
+    },
+    {
+      "h": "4. Ön lansman ödülü",
+      "p": "Ön kayıt, sizi “ayrılmış” bir IT4Y ödülüne uygun hale getirebilir. Ayırma, anında verilmesi veya kullanılması anlamına gelmez; fiilen verilmesi, o tarihte geçerli program kuralları kapsamında hesap oluşturma ve doğrulamaya bağlıdır."
+    },
+    {
+      "h": "5. Uygun olmayan kayıtlar",
+      "p": "Çoklu, otomatik, hayali veya hileli kayıtlar kaldırılabilir. Bir kişi birden fazla e-posta adresi kullanarak birden fazla avantaj elde edemez."
+    },
+    {
+      "h": "6. Programdaki değişiklikler",
+      "p": "Ön lansman mekanizması ve IT4Y programı teknik, operasyonel veya hukuki nedenlerle değiştirilebilir. Daha önce ayrılmış avantajları etkileyen değişiklikler bildirilecektir."
+    }
+  ],
+  "privacy": [
+    {
+      "h": "Topladığımız veriler",
+      "p": "Ön kayıt için programı yönetmek amacıyla gerekli verileri toplarız: e-posta adresi, dil, kayıt tarihi ve saati, kabul edilen belge sürümleri, ödüle uygunluk durumu ve ayrı beta seçeneğini seçerseniz onay durumu, tarihi ve sürümü."
+    },
+    {
+      "h": "Amaç",
+      "p": "Ön kaydı yönetmek, lansmanı bildirmek, daha sonra hesabı etkinleştirmek ve programla ilişkili avantajları ayırmak."
+    },
+    {
+      "h": "Beta programı",
+      "p": "Ayrı ve isteğe bağlı beta seçeneğini seçerseniz, e-posta adresinizi IsThere4You beta programı hakkında davet ve bilgi göndermek için kullanabiliriz. Bu onay ön kayıttan ayrıdır, zorunlu değildir ve ön kaydınızı veya ayrılmış avantajları etkilemeden geri çekilebilir."
+    },
+    {
+      "h": "Kötüye kullanım koruması",
+      "p": "Formu botlara ve kötüye kullanıma karşı korumak için Cloudflare Turnstile kullanırız. Bir kayıt kabul edilmeden önce doğrulama sunucu tarafında yapılır."
+    },
+    {
+      "h": "Pazarlama",
+      "p": "Ön kayıt ve isteğe bağlı beta onayı, haber bülteni veya genel pazarlama izni anlamına gelmez. Böyle bir iletişim başlatılırsa ayrıca onay mekanizması kullanılır."
+    },
+    {
+      "h": "İletişim mesajları",
+      "p": "İletişim formunu kullanırsanız e-posta adresinizi, konuyu, mesajı, dili ve gönderim tarih/saatini; belirtmeyi seçerseniz adınızı işleriz. Mesajlar Supabase altyapısı üzerinden iletilir; form kötüye kullanımı önlemek için Cloudflare Turnstile ve istek hız sınırlaması kullanır."
+    },
+    {
+      "h": "Haklarınız",
+      "p": "Geçerli hukuki yükümlülükler saklı kalmak üzere programdan çıkma, isteğe bağlı beta onayını geri çekme, verilerinize erişme, düzeltme veya silme talebinde bulunabilirsiniz."
+    }
+  ],
+  "it4y": [
+    {
+      "h": null,
+      "p": "Kısaca: IT4Y, IsThere4You’nun dahili ödül puanlarıdır."
+    },
+    {
+      "h": null,
+      "p": "Gelecekte IT4Y; Premium özellikler, platform içindeki diğer avantajlar ve etkinleştirilirse topluluğun diğer üyelerini gönüllü olarak ödüllendirmek için kullanılabilir."
+    },
+    {
+      "h": null,
+      "p": "IT4Y para veya kripto para değildir ve nakit olarak çekilemez."
+    },
+    {
+      "h": "Founding Member 2026",
+      "p": "Bu, sembolik bir ön lansman statüsüdür. Mülkiyet payı, yatırım, ortaklık veya hissedarlık değildir ve işletmeci ya da proje üzerinde hukuki hak vermez."
+    }
+  ]
+}
+
